@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlge1r7jwivtn"]
+[gd_scene load_steps=3 format=3 uid="uid://dlge1r7jwivtn"]
 
 [ext_resource type="PackedScene" uid="uid://cxg87ju51gjo6" path="res://Objects/obj_player.tscn" id="1_he8rk"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_c5b5h"]
 
 [node name="DevTesting" type="Node2D"]
 
 [node name="ObjPlayer" parent="." instance=ExtResource("1_he8rk")]
 position = Vector2(335, 469)
+
+[node name="ObjGravity" parent="." instance=ExtResource("2_c5b5h")]
+position = Vector2(759, 259)
+gravityStr = 2.7
