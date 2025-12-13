@@ -48,3 +48,13 @@ func _on_gravity_area_area_entered(area: Area2D) -> void:
 	if area.name == "GravityArea":
 		gravityStrList.append(area.get_parent().gravityStr)
 		gravityHomeList.append(area.get_parent().position)
+
+
+func _on_gravity_area_area_exited(area: Area2D) -> void:
+	if area.name == "GravityArea":
+		var gravityHomeSearch = area.get_parent().position
+		for g in gravityHomeList.size():
+			if gravityHomeList[g] == gravityHomeSearch:
+				gravityHomeList.remove_at(g)
+				gravityStrList.remove_at(g)
+				break;

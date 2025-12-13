@@ -26,3 +26,4 @@ shape = SubResource("CircleShape2D_cfy34")
 shape = SubResource("CircleShape2D_mir30")
 
 [connection signal="area_entered" from="GravityArea" to="." method="_on_gravity_area_area_entered"]
+[connection signal="area_exited" from="GravityArea" to="." method="_on_gravity_area_area_exited"]

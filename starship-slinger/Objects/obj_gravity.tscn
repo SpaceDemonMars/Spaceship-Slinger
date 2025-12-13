@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b672krlvwbqre"]
+[gd_scene load_steps=6 format=3 uid="uid://b672krlvwbqre"]
 
 [ext_resource type="Texture2D" uid="uid://btba30sv1pgol" path="res://Assets/Sprites/Asteroids/star_large.png" id="1_mes75"]
 [ext_resource type="Script" uid="uid://dv5lj7hajv18i" path="res://Scripts/gravity_stats.gd" id="1_n1qjq"]
+[ext_resource type="Script" uid="uid://cj7eob7o7o26x" path="res://Scripts/star_flair.gd" id="3_65g4h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_65g4h"]
 radius = 34.234486
@@ -14,6 +15,7 @@ script = ExtResource("1_n1qjq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mes75")
+script = ExtResource("3_65g4h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_65g4h")
