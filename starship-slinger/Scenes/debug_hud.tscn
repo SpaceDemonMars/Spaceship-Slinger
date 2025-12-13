@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwlgokpejl4a6"]
+
+[ext_resource type="Script" uid="uid://12etm8lfvekw" path="res://Scripts/debug_hud.gd" id="1_v5w1d"]
+
+[node name="DebugHud" type="CanvasLayer"]
+script = ExtResource("1_v5w1d")
+
+[node name="Pos" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Position: ( x, y)"
+horizontal_alignment = 2
+
+[node name="Velocity" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -106.0
+offset_top = 27.0
+offset_bottom = 50.0
+grow_horizontal = 0
+text = "Velocity: (x, y)"
+
+[node name="Reset" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -53.0
+offset_top = 52.0
+offset_right = -2.0
+offset_bottom = 83.0
+grow_horizontal = 0
+text = "Reset"
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Debug Hud (toggle `)"
+
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
