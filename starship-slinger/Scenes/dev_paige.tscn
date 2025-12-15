@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://2het5ht37ipr"]
+
+[ext_resource type="PackedScene" uid="uid://cxg87ju51gjo6" path="res://Objects/obj_player.tscn" id="1_i3vho"]
+[ext_resource type="PackedScene" path="res://Objects/obj_gravity.tscn" id="2_rwyjt"]
+[ext_resource type="PackedScene" uid="uid://bwlgokpejl4a6" path="res://Scenes/debug_hud.tscn" id="3_rwyjt"]
+[ext_resource type="PackedScene" uid="uid://ck5m2gr4453nq" path="res://Scenes/gameplay_hud.tscn" id="4_nt1mm"]
+
+[node name="Dev_Paige" type="Node2D"]
+
+[node name="ObjPlayer" parent="." instance=ExtResource("1_i3vho")]
+position = Vector2(538, 590)
+
+[node name="ObjGravity3" parent="." instance=ExtResource("2_rwyjt")]
+position = Vector2(452, 332)
+
+[node name="ObjGravity4" parent="." instance=ExtResource("2_rwyjt")]
+position = Vector2(767, 324)
+
+[node name="DebugHud" parent="." instance=ExtResource("3_rwyjt")]
+
+[node name="GameplayHud" parent="." instance=ExtResource("4_nt1mm")]

@@ -1,0 +1,23 @@
+Git Best Practices (as I learned them)
+
+General:
+ - Avoid working in multiple scipts at a time
+ - Work in your dev scene, or communicate making changes to main scene
+ - Communicate what scripts you're editing/when you are pushing
+ - Resolve errors BEFORE pushing, unless you need help resolving them
+ - Last person to make changes for the day updates Main
+	(fetch origin (safety), merge into current safety -> main)
+ - First person to make changes for the day updates Safety
+	(fetch origin (main), update from main (safety))
+
+Before Starting Features (keep your local repo up to date):
+ - On safety, fetch origin
+ - On dev, merge into current safety -> dev
+
+When Finished (checking for potential conflicts):
+ - On Safety, fetch origin
+ - On Dev, merge into current safety -> dev
+	- IF YOU GET A CONFLICT, try and fix it,
+	  our dev branches are also back-ups of our work so if it goes wrong we can fix it
+	- run the code and make sure theres no errors
+ - If above is good, on safety, merge into current dev -> safety, push
