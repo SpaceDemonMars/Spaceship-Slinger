@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
 var shipAccel = 10		#How much the ship accelerates every physics frame while thrusting
-var shipTurnRate = 5	#
+var shipTurnRate = 5	
 var fuelTotal = 100
 var fuelCurrent = fuelTotal
 var fuelLoss = 5
 @onready var GameplayHud = $"../GameplayHud" #move this to gameManager when made
 var inputVec : Vector2
 
-var gravityHomeList: Array[Vector2]
+var gravityStr = 0 #So that planets are not effected by the ship's gravity
+var gravityHomeList: Array[Node2D]
 var gravityStrList: Array[float]
 
 # Called when the node enters the scene tree for the first time.
@@ -38,10 +39,10 @@ func _physics_process(delta: float) -> void:
 	var gravityEffect := Vector2.ZERO
 	for g in gravityStrList.size():
 		var curGravStr = gravityStrList[g]
-		var curGravPos = gravityHomeList[g]
+		var curGravPos = gravityHomeList[g].position
 		var curGravVec = (curGravPos - self.position).normalized()
 		gravityEffect += curGravVec * curGravStr
-	velocity = velocity + gravityEffect
+	velocity += gravityEffect
 	
 	if inputVec.y == 0 && gravityEffect != Vector2.ZERO:
 		velocity = velocity.move_toward(Vector2.ZERO, 4)
@@ -52,14 +53,14 @@ func _physics_process(delta: float) -> void:
 func _on_gravity_area_area_entered(area: Area2D) -> void:
 	if area.name == "GravityArea":
 		gravityStrList.append(area.get_parent().gravityStr)
-		gravityHomeList.append(area.get_parent().position)
+		gravityHomeList.append(area.get_parent())
 
 
 func _on_gravity_area_area_exited(area: Area2D) -> void:
 	if area.name == "GravityArea":
 		var gravityHomeSearch = area.get_parent().position
 		for g in gravityHomeList.size():
-			if gravityHomeList[g] == gravityHomeSearch:
+			if gravityHomeList[g].position == gravityHomeSearch:
 				gravityHomeList.remove_at(g)
 				gravityStrList.remove_at(g)
 				break;
