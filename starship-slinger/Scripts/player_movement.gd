@@ -13,7 +13,8 @@ var gravityStrList: Array[float]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameplayHud.init_fuel(fuelTotal)
+	if GameplayHud :
+		GameplayHud.init_fuel(fuelTotal)
 
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +30,8 @@ func _physics_process(delta: float) -> void:
 		inputVec = Vector2(0, Input.get_axis("ThrustForward","ThrustBackwards"))
 		self.velocity += inputVec.rotated(rotation) * shipAccel
 		fuelCurrent -= fuelLoss * delta
-		GameplayHud.setFuel(fuelCurrent)
+		if GameplayHud :
+			GameplayHud.setFuel(fuelCurrent)
 	
 	#Space friction and gravity from planets
 	
