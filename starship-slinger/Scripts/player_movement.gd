@@ -2,8 +2,10 @@ extends CharacterBody2D
 
 var shipAccel = 10		#How much the ship accelerates every physics frame while thrusting
 var shipTurnRate = 5	#
-var fuelTotal = 1000000000
+var fuelTotal = 100
+var fuelCurrent = fuelTotal
 var fuelLoss = 5
+@onready var GameplayHud = $"../GameplayHud" #move this to gameManager when made
 var inputVec : Vector2
 
 var gravityHomeList: Array[Vector2]
@@ -11,7 +13,7 @@ var gravityStrList: Array[float]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	GameplayHud.init_fuel(fuelTotal)
 
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
@@ -23,10 +25,11 @@ func _physics_process(delta: float) -> void:
 		rotate(turnDir * shipTurnRate * delta)
 	
 	#Forward motion
-	if fuelTotal > 0 and Input.is_action_pressed("Thruster"):
+	if fuelCurrent > 0 and Input.is_action_pressed("Thruster"):
 		inputVec = Vector2(0, Input.get_axis("ThrustForward","ThrustBackwards"))
 		self.velocity += inputVec.rotated(rotation) * shipAccel
-		fuelTotal -= fuelLoss
+		fuelCurrent -= fuelLoss * delta
+		GameplayHud.setFuel(fuelCurrent)
 	
 	#Space friction and gravity from planets
 	
