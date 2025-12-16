@@ -8,6 +8,7 @@ var growthDir := 1
 func _process(delta: float) -> void:
 	if scale.x > scaleMax:
 		growthDir = -1
+		growthAmnt *= randf_range(1.2,.8)
 	elif scale.x < scaleMin:
 		growthDir = 1
 		

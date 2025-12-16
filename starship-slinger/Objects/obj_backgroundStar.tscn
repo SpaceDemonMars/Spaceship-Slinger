@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://ikm11gyrcn34"]
+
+[ext_resource type="Script" uid="uid://gt500bwf6yws" path="res://Scripts/background_star.gd" id="1_rpxw0"]
+[ext_resource type="Texture2D" uid="uid://c5b0i6c4ohoq6" path="res://Assets/Sprites/Asteroids/star_tiny.png" id="2_rqfqx"]
+[ext_resource type="Script" uid="uid://cj7eob7o7o26x" path="res://Scripts/star_flair.gd" id="3_rqfqx"]
+
+[node name="ObjBackgroundStar" type="Node2D"]
+script = ExtResource("1_rpxw0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rqfqx")
+script = ExtResource("3_rqfqx")
