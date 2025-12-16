@@ -9,6 +9,7 @@
 [node name="DevTesting" type="Node2D"]
 
 [node name="ObjBackgroundStars" parent="." instance=ExtResource("5_travu")]
+starCount = 10
 
 [node name="ObjPlayer" parent="." instance=ExtResource("1_he8rk")]
 position = Vector2(335, 469)

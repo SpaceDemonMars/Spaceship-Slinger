@@ -6,7 +6,7 @@ var fuelTotal = 100
 var fuelCurrent = fuelTotal
 var fuelLoss = 5
 @onready var GameplayHud = $"../GameplayHud" #move this to gameManager when made
-var inputVec : Vector2
+
 
 var gravityStr = 0 #So that planets are not effected by the ship's gravity
 var gravityHomeList: Array[Node2D]
@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 		rotate(turnDir * shipTurnRate * delta)
 	
 	#Forward motion
+	var inputVec : Vector2
 	if fuelCurrent > 0 and Input.is_action_pressed("Thruster"):
 		inputVec = Vector2(0, Input.get_axis("ThrustForward","ThrustBackwards"))
 		self.velocity += inputVec.rotated(rotation) * shipAccel
@@ -35,7 +36,6 @@ func _physics_process(delta: float) -> void:
 			GameplayHud.setFuel(fuelCurrent)
 	
 	#Space friction and gravity from planets
-	
 	var gravityEffect := Vector2.ZERO
 	for g in gravityStrList.size():
 		var curGravStr = gravityStrList[g]
@@ -44,8 +44,8 @@ func _physics_process(delta: float) -> void:
 		gravityEffect += curGravVec * curGravStr
 	velocity += gravityEffect
 	
-	if inputVec.y == 0 && gravityEffect != Vector2.ZERO:
-		velocity = velocity.move_toward(Vector2.ZERO, 4)
+	if inputVec.y == 0 && gravityEffect == Vector2.ZERO:
+		velocity = velocity.move_toward(Vector2.ZERO, 0.5)
 	
 	move_and_slide()
 
