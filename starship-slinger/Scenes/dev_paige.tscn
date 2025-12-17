@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://2het5ht37ipr"]
+[gd_scene load_steps=7 format=3 uid="uid://2het5ht37ipr"]
 
 [ext_resource type="PackedScene" uid="uid://cxg87ju51gjo6" path="res://Objects/obj_player.tscn" id="1_i3vho"]
+[ext_resource type="PackedScene" uid="uid://b00i4vxcyrf80" path="res://Objects/obj_backgroundManager.tscn" id="1_kf43x"]
 [ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_rwyjt"]
 [ext_resource type="PackedScene" uid="uid://bwlgokpejl4a6" path="res://Scenes/debug_hud.tscn" id="3_rwyjt"]
 [ext_resource type="PackedScene" uid="uid://ck5m2gr4453nq" path="res://Scenes/gameplay_hud.tscn" id="4_nt1mm"]
@@ -8,15 +9,22 @@
 
 [node name="Dev_Paige" type="Node2D"]
 
+[node name="ObjBackgroundStars" parent="." instance=ExtResource("1_kf43x")]
+
 [node name="ObjPlayer" parent="." instance=ExtResource("1_i3vho")]
 unique_name_in_owner = true
 position = Vector2(464, 514)
 
 [node name="ObjGravity3" parent="." instance=ExtResource("2_rwyjt")]
 position = Vector2(452, 332)
+gravityStr = 2.0
+wellSize = 9.0
 
 [node name="ObjGravity4" parent="." instance=ExtResource("2_rwyjt")]
 position = Vector2(767, 324)
+gravityEffected = true
+startingSpeed = 250.0
+startingDir = 90.0
 
 [node name="DebugHud" parent="." instance=ExtResource("3_rwyjt")]
 
