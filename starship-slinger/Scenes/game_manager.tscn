@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://xiissbrnc2mw"]
-
-[node name="GameManager" type="Node"]
-
-[node name="Hud" type="CanvasLayer" parent="."]

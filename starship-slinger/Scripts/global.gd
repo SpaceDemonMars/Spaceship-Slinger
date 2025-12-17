@@ -1,5 +1,17 @@
 extends Node
 
+var player 
+
+func _ready() -> void:
+	print("Entered GM: Ready")
+	player = $"../ObjPlayer"
+	print(player)
+
+func _process(_delta: float) -> void:
+	
+	#player = get_node("%ObjPlayer")
+	print(player)
+
 #How do we want the score to work?
 #num times successfully reached goal without dying?
 #should we also multiply it by the timer as a speed bonus?

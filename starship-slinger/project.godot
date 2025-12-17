@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scenes/global.tscn"
+GameManager="*res://Scripts/m_gameManager.gd"
 
 [input]
 

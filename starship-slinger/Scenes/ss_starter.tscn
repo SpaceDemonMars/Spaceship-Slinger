@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://g5dstpmmurlt"]
+
+[ext_resource type="Script" uid="uid://cyxl32vel30ya" path="res://Scripts/ss_starter.gd" id="1_wegds"]
+[ext_resource type="Texture2D" uid="uid://jnhk0vc5yrgj" path="res://Assets/Sprites/Ships/ship_A.png" id="2_45jap"]
+
+[node name="SS_Starter" type="Node2D"]
+script = ExtResource("1_wegds")
+shipAsset = ExtResource("2_45jap")
+maxFuel = 100
+fuelUseRate = 5
+turnSpeed = 5
+acceleration = 10
+speed = 100
+health = 3
+
+[node name="Ship" type="Sprite2D" parent="."]
