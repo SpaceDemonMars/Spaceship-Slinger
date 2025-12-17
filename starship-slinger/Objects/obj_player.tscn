@@ -30,3 +30,4 @@ position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
 [connection signal="area_entered" from="GravityArea" to="." method="_on_gravity_area_area_entered"]
+[connection signal="area_exited" from="GravityArea" to="." method="_on_gravity_area_area_exited"]

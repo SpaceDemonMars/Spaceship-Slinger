@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlge1r7jwivtn"]
+[gd_scene load_steps=6 format=3 uid="uid://dlge1r7jwivtn"]
 
 [ext_resource type="PackedScene" uid="uid://cxg87ju51gjo6" path="res://Objects/obj_player.tscn" id="1_he8rk"]
 [ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_c5b5h"]
+[ext_resource type="PackedScene" uid="uid://bwlgokpejl4a6" path="res://Scenes/debug_hud.tscn" id="3_cr7m2"]
+[ext_resource type="PackedScene" uid="uid://ck5m2gr4453nq" path="res://Scenes/gameplay_hud.tscn" id="4_travu"]
+[ext_resource type="PackedScene" uid="uid://b00i4vxcyrf80" path="res://Objects/obj_backgroundManager.tscn" id="5_travu"]
 
 [node name="DevTesting" type="Node2D"]
+
+[node name="ObjBackgroundStars" parent="." instance=ExtResource("5_travu")]
+starCount = 10
 
 [node name="ObjPlayer" parent="." instance=ExtResource("1_he8rk")]
 position = Vector2(335, 469)
@@ -11,3 +17,9 @@ position = Vector2(335, 469)
 [node name="ObjGravity" parent="." instance=ExtResource("2_c5b5h")]
 position = Vector2(759, 259)
 gravityStr = 2.7
+startingSpeed = 0.0
+wellSize = 3.0
+
+[node name="DebugHud" parent="." instance=ExtResource("3_cr7m2")]
+
+[node name="GameplayHud" parent="." instance=ExtResource("4_travu")]
