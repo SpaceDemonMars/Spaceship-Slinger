@@ -16,10 +16,15 @@ position = Vector2(335, 469)
 
 [node name="ObjGravity" parent="." instance=ExtResource("2_c5b5h")]
 position = Vector2(759, 259)
-gravityStr = 2.7
-startingSpeed = 0.0
-wellSize = 3.0
+gravityStr = 3.0
+wellSize = 7.0
 
 [node name="DebugHud" parent="." instance=ExtResource("3_cr7m2")]
 
 [node name="GameplayHud" parent="." instance=ExtResource("4_travu")]
+
+[node name="ObjGravity2" parent="." instance=ExtResource("2_c5b5h")]
+position = Vector2(518, 253)
+gravityEffected = true
+startingSpeed = 200.0
+startingDir = 90.0

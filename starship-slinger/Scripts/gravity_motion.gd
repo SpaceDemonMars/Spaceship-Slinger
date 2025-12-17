@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var gravityStr: float = 1
 @export var gravityEffected := true #If moved by gravity
-@export var startingSpeed : float = 2		#if it starts with some motion
+@export var startingSpeed : float = 0		#if it starts with some motion
 @export var startingDir : float = 0 
 @export var wellSize : float = 1 #size of an aoe the gravity on this object
 @export var objWeight : float = 1
