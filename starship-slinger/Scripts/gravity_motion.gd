@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 			var curGravVec = (curGravPos - self.position).normalized()
 			gravityEffect += curGravVec * curGravStr
 		self.velocity += gravityEffect / objWeight
-		print(velocity)
+		#print(velocity)
 		
 	move_and_slide()
 
