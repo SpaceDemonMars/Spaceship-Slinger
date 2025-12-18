@@ -1,13 +1,11 @@
 extends Node2D
 
 var symbols
-var lable 
 var active = true
 var setup = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	lable = $"../WarningLabel" 
 	var angle = 0
 	symbols = get_children()
 	for s in symbols:

@@ -29,6 +29,8 @@ position = Vector2(518, 253)
 gravityEffected = true
 startingSpeed = 250.0
 startingDir = 90.0
+wellSize = 5.0
+showGravity = false
 
 [node name="ObjPlayspace" parent="." instance=ExtResource("6_d7lav")]
 position = Vector2(416.99997, 379)

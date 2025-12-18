@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var startingDir : float = 0 
 @export var wellSize : float = 1 #size of an aoe the gravity on this object
 @export var objWeight : float = 1
+@export var showGravity = true
 
 var gravityHomeList: Array[Node2D]
 var gravityStrList: Array[float]
@@ -18,6 +19,8 @@ func _ready() -> void:
 		self.velocity = self.velocity.rotated(deg_to_rad(startingDir)) * startingSpeed
 	
 	$GravityArea.scale = Vector2(wellSize,wellSize)
+	#if !showGravity:
+		#$"GravityArea".visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

@@ -1,18 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://b672krlvwbqre"]
+[gd_scene load_steps=7 format=3 uid="uid://b672krlvwbqre"]
 
 [ext_resource type="Script" uid="uid://dgvs2cluxd6ia" path="res://Scripts/gravity_motion.gd" id="1_50drk"]
 [ext_resource type="Texture2D" uid="uid://btba30sv1pgol" path="res://Assets/Sprites/Asteroids/star_large.png" id="1_mes75"]
+[ext_resource type="Script" uid="uid://bacexohnfskol" path="res://Objects/gravity_visual.gd" id="2_t4x7n"]
 [ext_resource type="Script" uid="uid://cj7eob7o7o26x" path="res://Scripts/star_flair.gd" id="3_65g4h"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_65g4h"]
-radius = 34.234486
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4x7n"]
 radius = 48.09366
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_65g4h"]
+radius = 34.234486
+
 [node name="ObjGravity" type="CharacterBody2D"]
 script = ExtResource("1_50drk")
 gravityEffected = false
+
+[node name="GravityArea" type="Area2D" parent="."]
+script = ExtResource("2_t4x7n")
+
+[node name="GravityCollision" type="CollisionShape2D" parent="GravityArea"]
+shape = SubResource("CircleShape2D_t4x7n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mes75")
@@ -20,11 +27,6 @@ script = ExtResource("3_65g4h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_65g4h")
-
-[node name="GravityArea" type="Area2D" parent="."]
-
-[node name="GravityCollision" type="CollisionShape2D" parent="GravityArea"]
-shape = SubResource("CircleShape2D_t4x7n")
 
 [connection signal="area_entered" from="GravityArea" to="." method="_on_gravity_area_area_entered"]
 [connection signal="area_exited" from="GravityArea" to="." method="_on_gravity_area_area_exited"]

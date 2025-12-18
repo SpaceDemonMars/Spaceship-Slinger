@@ -47,9 +47,5 @@ texture = ExtResource("4_l56h4")
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("4_l56h4")
 
-[node name="WarningLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [connection signal="area_entered" from="GravityArea" to="." method="_on_gravity_area_area_entered"]
 [connection signal="area_exited" from="GravityArea" to="." method="_on_gravity_area_area_exited"]
