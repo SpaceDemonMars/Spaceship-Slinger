@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 @export var gravityStr: float = 1
 @export var gravityEffected := true #If moved by gravity
-@export var startingSpeed : float = 2		#if it starts with some motion
+@export var startingSpeed : float = 0		#if it starts with some motion
 @export var startingDir : float = 0 
 @export var wellSize : float = 1 #size of an aoe the gravity on this object
 @export var objWeight : float = 1
+@export var showGravity = true
 
 var gravityHomeList: Array[Node2D]
 var gravityStrList: Array[float]
@@ -18,6 +19,8 @@ func _ready() -> void:
 		self.velocity = self.velocity.rotated(deg_to_rad(startingDir)) * startingSpeed
 	
 	$GravityArea.scale = Vector2(wellSize,wellSize)
+	#if !showGravity:
+		#$"GravityArea".visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -30,7 +33,7 @@ func _physics_process(delta: float) -> void:
 			var curGravVec = (curGravPos - self.position).normalized()
 			gravityEffect += curGravVec * curGravStr
 		self.velocity += gravityEffect / objWeight
-		print(velocity)
+		#print(velocity)
 		
 	move_and_slide()
 
