@@ -2,7 +2,7 @@ extends Node2D
 
 @export var starCount : int = 10
 @export var starSkewstr := .001
-@export var skewSpeed = 600
+@export var skewSpeed = 700
 var star := preload("res://Objects/obj_backgroundStar.tscn")
 
 # Called when the node enters the scene tree for the first time.
