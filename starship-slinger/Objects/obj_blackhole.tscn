@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv7stsr85j7rf"]
+
+[ext_resource type="Script" uid="uid://cuwk5d1rd44n6" path="res://Scripts/blackhole_logic.gd" id="1_yta1c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bweka"]
+radius = 44.553337
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yta1c"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 48.0
+emission_ring_cone_angle = 90.0
+angle_min = -80.69999
+angle_max = 1.0728835e-05
+orbit_velocity_min = 0.22400011
+orbit_velocity_max = 0.48600012
+gravity = Vector3(0, -10, 0)
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y3xbk"]
+radius = 93.64828
+
+[node name="ObjBlackhole" type="Area2D"]
+script = ExtResource("1_yta1c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_bweka")
+
+[node name="GravityArea" type="Area2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="GravityArea"]
+amount = 50
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 16
+trail_section_subdivisions = 8
+process_material = SubResource("ParticleProcessMaterial_yta1c")
+
+[node name="GravityCollision" type="CollisionShape2D" parent="GravityArea"]
+visible = false
+shape = SubResource("CircleShape2D_y3xbk")

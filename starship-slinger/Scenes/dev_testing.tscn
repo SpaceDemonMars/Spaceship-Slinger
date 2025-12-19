@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlge1r7jwivtn"]
+[gd_scene load_steps=8 format=3 uid="uid://dlge1r7jwivtn"]
 
 [ext_resource type="PackedScene" uid="uid://cxg87ju51gjo6" path="res://Objects/obj_player.tscn" id="1_he8rk"]
 [ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_c5b5h"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ck5m2gr4453nq" path="res://Scenes/gameplay_hud.tscn" id="4_travu"]
 [ext_resource type="PackedScene" uid="uid://b00i4vxcyrf80" path="res://Objects/obj_backgroundManager.tscn" id="5_travu"]
 [ext_resource type="PackedScene" uid="uid://cms2tpxiskl64" path="res://Objects/obj_Booster.tscn" id="6_d7lav"]
+[ext_resource type="PackedScene" uid="uid://cv7stsr85j7rf" path="res://Objects/obj_blackhole.tscn" id="7_agppa"]
 
 [node name="DevTesting" type="Node2D"]
 
@@ -35,3 +36,8 @@ showGravity = false
 [node name="ObjBooster" parent="." instance=ExtResource("6_d7lav")]
 position = Vector2(273, 271)
 rotation = -4.099778
+
+[node name="ObjBlackhole" parent="." instance=ExtResource("7_agppa")]
+position = Vector2(691, 779)
+gravityStr = 10.0
+wellSize = 5.0
