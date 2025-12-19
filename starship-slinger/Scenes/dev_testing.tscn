@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bwlgokpejl4a6" path="res://Scenes/debug_hud.tscn" id="3_cr7m2"]
 [ext_resource type="PackedScene" uid="uid://ck5m2gr4453nq" path="res://Scenes/gameplay_hud.tscn" id="4_travu"]
 [ext_resource type="PackedScene" uid="uid://b00i4vxcyrf80" path="res://Objects/obj_backgroundManager.tscn" id="5_travu"]
-[ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="6_d7lav"]
+[ext_resource type="PackedScene" uid="uid://cms2tpxiskl64" path="res://Objects/obj_Booster.tscn" id="6_d7lav"]
 
 [node name="DevTesting" type="Node2D"]
 
@@ -13,7 +13,7 @@
 starCount = 10
 
 [node name="ObjPlayer" parent="." instance=ExtResource("1_he8rk")]
-position = Vector2(335, 469)
+position = Vector2(344, 499)
 
 [node name="ObjGravity" parent="." instance=ExtResource("2_c5b5h")]
 position = Vector2(759, 259)
@@ -32,6 +32,6 @@ startingDir = 90.0
 wellSize = 5.0
 showGravity = false
 
-[node name="ObjPlayspace" parent="." instance=ExtResource("6_d7lav")]
-position = Vector2(416.99997, 379)
-scale = Vector2(38.345, 21.47)
+[node name="ObjBooster" parent="." instance=ExtResource("6_d7lav")]
+position = Vector2(273, 271)
+rotation = -4.099778

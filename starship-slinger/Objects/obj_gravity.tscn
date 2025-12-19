@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgvs2cluxd6ia" path="res://Scripts/gravity_motion.gd" id="1_50drk"]
 [ext_resource type="Texture2D" uid="uid://btba30sv1pgol" path="res://Assets/Sprites/Asteroids/star_large.png" id="1_mes75"]
-[ext_resource type="Script" uid="uid://bacexohnfskol" path="res://Objects/gravity_visual.gd" id="2_t4x7n"]
+[ext_resource type="Script" uid="uid://bacexohnfskol" path="res://Scripts/gravity_visual.gd" id="2_t4x7n"]
 [ext_resource type="Script" uid="uid://cj7eob7o7o26x" path="res://Scripts/star_flair.gd" id="3_65g4h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4x7n"]

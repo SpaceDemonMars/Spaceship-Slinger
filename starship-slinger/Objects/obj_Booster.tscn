@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cms2tpxiskl64"]
+
+[ext_resource type="Script" uid="uid://bjcm1gn2tjsu6" path="res://Scripts/booster.gd" id="1_08vwo"]
+[ext_resource type="Texture2D" uid="uid://cg0uxunv0pj8p" path="res://Assets/Sprites/Ships/ship_sidesD.png" id="2_28tu7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deyib"]
+size = Vector2(98, 90)
+
+[node name="ObjBooster" type="Area2D"]
+script = ExtResource("1_08vwo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_28tu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_deyib")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

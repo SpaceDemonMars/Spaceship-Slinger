@@ -3,6 +3,7 @@ extends Node2D
 var spawnRange = 256 + 128
 @export var doRelocate := true
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if doRelocate:
