@@ -37,7 +37,16 @@ showGravity = false
 position = Vector2(273, 271)
 rotation = -4.099778
 
-[node name="ObjBlackhole" parent="." instance=ExtResource("7_agppa")]
-position = Vector2(691, 779)
+[node name="ObjBlackhole" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("7_agppa")]
+position = Vector2(690, 777)
 gravityStr = 10.0
-wellSize = 5.0
+wellSize = 1.0
+colorKey = 1
+sibling = NodePath("../ObjBlackhole2")
+
+[node name="ObjBlackhole2" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("7_agppa")]
+position = Vector2(97, 465)
+gravityStr = 10.0
+wellSize = 1.0
+colorKey = 1
+sibling = NodePath("../ObjBlackhole")
