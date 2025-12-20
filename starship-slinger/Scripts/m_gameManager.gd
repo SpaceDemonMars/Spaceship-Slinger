@@ -6,7 +6,7 @@ var ship : PackedScene = preload("res://Scenes/ss_starter.tscn")
 
 #menu variables
 var isTimePaused := false
-@onready var gameTimer := 55.0
+@onready var gameTimer := 0.0
 var mainMenu: PackedScene = preload("res://Scenes/main_menu.tscn")
 var settingsMenu: PackedScene = preload("res://Scenes/settings_menu.tscn")
 #win/lose screens
@@ -37,7 +37,8 @@ func _ready():
 	#activeLevel.lvl.hud.setTimer(gameTimer)
 
 func _process(delta: float) -> void:
-	if (!isInMenu):
+	if (Input.is_action_just_pressed("Settings") and !settingsOpen): openSettingsMenu()
+	if (!settingsOpen and !isInMenu):
 		gameTimer += delta
 		activeLevel.hud.setTimer(gameTimer)
 		
@@ -63,3 +64,8 @@ func load_levels():
 			file_name = folder.get_next()
 		folder.list_dir_end()
 		
+
+func openSettingsMenu() ->void:
+	var settings = settingsMenu.instantiate() as CanvasLayer
+	add_child(settings)	
+	settingsOpen = true
