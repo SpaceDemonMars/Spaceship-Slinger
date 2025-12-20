@@ -34,13 +34,15 @@ func _on_usage_delay_timeout() -> void:
 #Timer
 @onready var timeLabel = $ScoreTimeContainer/Timer
 
-func setTimer(time: float):
-	@warning_ignore("integer_division")
-	var minutes := int(time)/60 
-	time -= (60*minutes)
-	var m = "%d" % minutes
-	var s = "%.2f" % time
-	timeLabel.text = m + ':' + s
+func setTimer(time: float = 0.0):
+	timeLabel.text = GameManager.utilConvertTimetoString(time)
 
 
 #Score
+@onready var scoreLabel = $ScoreTimeContainer/Score
+
+func setScore():
+	scoreLabel.text = "%d" % GameManager.totalScore
+	
+func _ready():
+	setScore()

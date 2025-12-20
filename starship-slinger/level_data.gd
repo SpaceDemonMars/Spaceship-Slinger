@@ -34,15 +34,3 @@ func _ready():
 		add_child(dbHud)
 		
 	GameManager.isInMenu = false
-
-#func _ready():
-	#if (LevelObjects):
-		#lvl = LevelObjects.instantiate() as Node2D
-		#add_child(lvl)
-		#
-		#bgMan = backgroundManager.instantiate() as Node2D
-		#lvl.add_child(bgMan)
-	#
-		#hud = gameplayHud.instantiate() as CanvasLayer
-		#lvl.add_child(hud)
-	#else : print('\nERROR:: Missing Scene: Level Objects')
