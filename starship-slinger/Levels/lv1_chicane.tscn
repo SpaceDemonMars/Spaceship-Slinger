@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvg5ifv3ds8q1"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_df16k"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="1_xexkr"]
+[ext_resource type="PackedScene" uid="uid://baehc6ggoilrg" path="res://Objects/obj_destination.tscn" id="2_df16k"]
+
+[node name="Lv1Chicane" type="Node2D"]
+script = ExtResource("1_df16k")
+
+[node name="ObjGravity" parent="." instance=ExtResource("1_xexkr")]
+position = Vector2(1151, 346)
+gravityStr = 15.0
+wellSize = 15.0
+
+[node name="ObjGravity2" parent="." instance=ExtResource("1_xexkr")]
+position = Vector2(2570, -335)
+gravityStr = 15.0
+wellSize = 15.0
+
+[node name="ObjDestination" parent="." instance=ExtResource("2_df16k")]
+position = Vector2(3963, 2)
