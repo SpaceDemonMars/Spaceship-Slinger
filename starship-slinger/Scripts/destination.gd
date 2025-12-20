@@ -22,4 +22,4 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "ObjPlayer":
 		#send signals to gamemanager to end the level
-		pass
+		GameManager.destinationEntered()

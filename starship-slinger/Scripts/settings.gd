@@ -34,6 +34,7 @@ func _on_sfxVolume_slider_value_changed(value: float) -> void:
 
 func closeSettingsMenu() -> void:
 	GameManager.settingsOpen = false;
+	get_tree().paused = GameManager.settingsOpen
 	queue_free() 	
 
 func _on_close_pressed() -> void:
