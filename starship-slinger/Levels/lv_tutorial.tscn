@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpqmd1v8crr07"]
+
+[ext_resource type="PackedScene" uid="uid://baehc6ggoilrg" path="res://Objects/obj_destination.tscn" id="1_k6tmq"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_mfj3f"]
+[ext_resource type="PackedScene" uid="uid://cxg87ju51gjo6" path="res://Objects/obj_player.tscn" id="3_wglvb"]
+[ext_resource type="PackedScene" uid="uid://bvnf0qvfcfitw" path="res://Objects/obj_yellowpaint.tscn" id="4_mfj3f"]
+
+[node name="LvTutorial" type="Node2D"]
+
+[node name="ObjDestination" parent="." instance=ExtResource("1_k6tmq")]
+position = Vector2(1304, -9)
+
+[node name="ObjGravity" parent="." instance=ExtResource("2_mfj3f")]
+position = Vector2(575, 192)
+gravityStr = 5.0
+wellSize = 10.0
+
+[node name="ObjPlayer" parent="." instance=ExtResource("3_wglvb")]
+position = Vector2(0, -4)
+
+[node name="paint" type="Node2D" parent="."]
+
+[node name="ObjYellowpaint" parent="paint" instance=ExtResource("4_mfj3f")]
+position = Vector2(339, -161)
+
+[node name="ObjYellowpaint2" parent="paint" instance=ExtResource("4_mfj3f")]
+position = Vector2(780, -170)

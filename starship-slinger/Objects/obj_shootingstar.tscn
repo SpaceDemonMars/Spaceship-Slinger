@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpsiesvmwlkk0"]
+
+[ext_resource type="Script" uid="uid://cnnmkf2n80q6a" path="res://Objects/shootingstar.gd" id="1_3attk"]
+[ext_resource type="Texture2D" uid="uid://frxajtjhe0k7" path="res://Assets/Sprites/Asteroids/star_small.png" id="2_5o1hd"]
+
+[node name="ObjShootingstar" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_3attk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5o1hd")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
