@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck5m2gr4453nq"]
+[gd_scene load_steps=8 format=3 uid="uid://ck5m2gr4453nq"]
 
 [ext_resource type="Script" uid="uid://bl20dvj8polot" path="res://Scripts/gameplay_hud.gd" id="1_6u54k"]
+[ext_resource type="FontFile" uid="uid://cdeayi78jcwd1" path="res://Fonts/space-frigate-font/SpaceFrigate-KVdW.ttf" id="2_7uida"]
+[ext_resource type="FontFile" uid="uid://c1j31hw84v67m" path="res://Fonts/space-frigate-font/SpaceFrigateItalic-2vEW.ttf" id="3_56twx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2soh"]
 
@@ -53,5 +55,46 @@ show_percentage = false
 [node name="UsageDelay" type="Timer" parent="FuelGuage"]
 wait_time = 0.4
 one_shot = true
+
+[node name="ScoreTimeContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -321.0
+offset_top = 15.0
+offset_right = -21.0
+offset_bottom = 98.0
+grow_horizontal = 0
+
+[node name="Score" type="Label" parent="ScoreTimeContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 65.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_7uida")
+theme_override_font_sizes/font_size = 50
+text = "34605"
+horizontal_alignment = 2
+
+[node name="Timer" type="Label" parent="ScoreTimeContainer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_56twx")
+theme_override_font_sizes/font_size = 30
+text = "1:25:13"
+horizontal_alignment = 3
 
 [connection signal="timeout" from="FuelGuage/UsageDelay" to="." method="_on_usage_delay_timeout"]

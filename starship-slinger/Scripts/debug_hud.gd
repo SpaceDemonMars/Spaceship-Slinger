@@ -4,8 +4,8 @@ var player : CharacterBody2D
 var startPos : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player = get_parent().get_node("ObjPlayer") # Replace with function body.
-	startPos = player.position
+	player = GameManager.activeLevel.player # Replace with function body.
+	startPos = GameManager.activeLevel.playerStartPos
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

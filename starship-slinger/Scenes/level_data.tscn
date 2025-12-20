@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsh3n5soapn0m"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_72eum"]
+
+[node name="Level_Data" type="Node"]
+script = ExtResource("1_72eum")
+ExpectedCompletionTime = 300.0
+MaxCompletionTime = 1000.0

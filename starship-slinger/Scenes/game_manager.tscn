@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://xiissbrnc2mw"]
+[gd_scene load_steps=2 format=3 uid="uid://xiissbrnc2mw"]
+
+[ext_resource type="Script" uid="uid://3gyn47dvih14" path="res://Scripts/m_gameManager.gd" id="1_oj352"]
 
 [node name="GameManager" type="Node"]
-
-[node name="Hud" type="CanvasLayer" parent="."]
+script = ExtResource("1_oj352")

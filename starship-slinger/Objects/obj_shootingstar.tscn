@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpsiesvmwlkk0"]
 
-[ext_resource type="Script" uid="uid://cnnmkf2n80q6a" path="res://Objects/shootingstar.gd" id="1_3attk"]
+[ext_resource type="Script" uid="uid://cnnmkf2n80q6a" path="res://Scripts/shootingstar.gd" id="1_3attk"]
 [ext_resource type="Texture2D" uid="uid://frxajtjhe0k7" path="res://Assets/Sprites/Asteroids/star_small.png" id="2_5o1hd"]
 
 [node name="ObjShootingstar" type="CharacterBody2D"]
