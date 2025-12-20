@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://pg2sd420kqy0"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_ht2g1"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_ct37r"]
+[ext_resource type="PackedScene" uid="uid://baehc6ggoilrg" path="res://Objects/obj_destination.tscn" id="3_dv03m"]
+[ext_resource type="PackedScene" uid="uid://bvnf0qvfcfitw" path="res://Objects/obj_yellowpaint.tscn" id="4_5yfmh"]
+[ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="5_sebjf"]
+[ext_resource type="PackedScene" uid="uid://cms2tpxiskl64" path="res://Objects/obj_Booster.tscn" id="6_ct37r"]
+
+[node name="Lv3Orbit" type="Node2D"]
+script = ExtResource("1_ht2g1")
+
+[node name="ObjGravity" parent="." instance=ExtResource("2_ct37r")]
+position = Vector2(935, -3959)
+scale = Vector2(3, 2.9857996)
+gravityStr = 35.0
+wellSize = 15.0
+
+[node name="ObjDestination" parent="." instance=ExtResource("3_dv03m")]
+position = Vector2(-3730, -2874)
+
+[node name="paint" type="Node2D" parent="."]
+position = Vector2(861, -122)
+
+[node name="ObjYellowpaint" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(-859, -96)
+
+[node name="ObjYellowpaint2" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(-372, -4354)
+
+[node name="ObjYellowpaint3" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(-1864, -2920)
+
+[node name="ObjPlayspace" parent="paint" instance=ExtResource("5_sebjf")]
+visible = false
+position = Vector2(-1762.9998, -2354.9998)
+scale = Vector2(414.9168, 302.52847)
+
+[node name="ObjBooster" parent="." instance=ExtResource("6_ct37r")]
+position = Vector2(0, -364)
+boostStr = 1000.0
