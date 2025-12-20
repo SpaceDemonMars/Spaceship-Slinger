@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://8vrdrghn2e8t"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_v2pbu"]
+[ext_resource type="PackedScene" uid="uid://cv7stsr85j7rf" path="res://Objects/obj_blackhole.tscn" id="2_v2pbu"]
+[ext_resource type="PackedScene" uid="uid://cms2tpxiskl64" path="res://Objects/obj_Booster.tscn" id="3_g1uok"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="4_xhrfk"]
+
+[node name="LevelObjects" type="Node2D"]
+script = ExtResource("1_v2pbu")
+playerStartPos = Vector2(575, 325)
+
+[node name="ObjBlackhole" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("2_v2pbu")]
+position = Vector2(154, 528)
+colorKey = 1
+sibling = NodePath("../ObjBlackhole2")
+
+[node name="ObjBlackhole2" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("2_v2pbu")]
+position = Vector2(1037, 140)
+colorKey = 1
+sibling = NodePath("../ObjBlackhole")
+
+[node name="ObjBooster" parent="." instance=ExtResource("3_g1uok")]
+position = Vector2(904, 489)
+rotation = 2.22012
+
+[node name="ObjGravity" parent="." instance=ExtResource("4_xhrfk")]
+position = Vector2(98, 206)
+
+[node name="ObjGravity2" parent="." instance=ExtResource("4_xhrfk")]
+position = Vector2(291, 76)
+gravityEffected = true
+startingSpeed = 250.0
+startingDir = 9.0
+wellSize = 5.0

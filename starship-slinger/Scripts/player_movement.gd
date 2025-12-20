@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-var shipAccel = 10		#How much the ship accelerates every physics frame while thrusting
-var shipTurnRate = 5	
-var fuelTotal = 100
-var fuelCurrent = fuelTotal
-var fuelLoss = 5
-@onready var GameplayHud = $"../GameplayHud" #move this to gameManager when made
+var shipAccel		#How much the ship accelerates every physics frame while thrusting
+var shipTurnRate	
+var fuelTotal
+var fuelCurrent
+var fuelLoss
+@onready var shipAsset = $Sprite2D
+var GameplayHud #move this to gameManager when made
 
 
 var gravityStr = 0 #So that planets are not effected by the ship's gravity
@@ -14,8 +15,14 @@ var gravityStrList: Array[float]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	getShipStats()
+	
+	GameplayHud = GameManager.activeLevel.hud
+	
 	if GameplayHud :
 		GameplayHud.init_fuel(fuelTotal)
+	
+	
 
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +55,19 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, 0.5)
 	
 	move_and_slide()
+
+
+func getShipStats():
+	var shipStats = GameManager.ship.instantiate() as Node
+	add_child(shipStats)
+	shipAccel = shipStats.acceleration
+	shipTurnRate = shipStats.turnSpeed
+	fuelTotal = shipStats.maxFuel
+	fuelLoss = shipStats.fuelUseRate
+	fuelCurrent = fuelTotal
+	shipAsset.texture = shipStats.shipAsset
+	shipStats.queue_free()
+	
 
 
 func _on_gravity_area_area_entered(area: Area2D) -> void:

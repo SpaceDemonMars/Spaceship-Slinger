@@ -12,7 +12,7 @@ func _ready() -> void:
 		add_child(starInstance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var playerSpeed = $"../ObjPlayer".velocity.length()
 	var playerDir = $"../ObjPlayer".velocity.angle()
 	var stars = get_children()

@@ -2,14 +2,14 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.settingsOpen = true;
+	GameManager.settingsOpen = true;
 	#grab saved settings
-	setLabel($ColorRect/MasterVolume/label, 'Master Volume', Global.masterVol)
-	setSlider($ColorRect/MasterVolume/HSlider, Global.masterVol)
-	setLabel($ColorRect/BackgroundMusic/label, 'Background Music', Global.bgmVol)
-	setSlider($ColorRect/BackgroundMusic/HSlider, Global.bgmVol)
-	setLabel($ColorRect/SFXVolume/label, 'SFX Volume', Global.sfxVol)
-	setSlider($ColorRect/SFXVolume/HSlider, Global.sfxVol)
+	setLabel($ColorRect/MasterVolume/label, 'Master Volume', GameManager.masterVol)
+	setSlider($ColorRect/MasterVolume/HSlider, GameManager.masterVol)
+	setLabel($ColorRect/BackgroundMusic/label, 'Background Music', GameManager.bgmVol)
+	setSlider($ColorRect/BackgroundMusic/HSlider, GameManager.bgmVol)
+	setLabel($ColorRect/SFXVolume/label, 'SFX Volume', GameManager.sfxVol)
+	setSlider($ColorRect/SFXVolume/HSlider, GameManager.sfxVol)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,17 +23,17 @@ func setSlider(slider: HSlider, value: float) -> void:
 
 
 func _on_masterVolume_slider_value_changed(value: float) -> void:
-	Global.masterVol = value
-	setLabel($ColorRect/MasterVolume/label, 'Master Volume', Global.masterVol)
+	GameManager.masterVol = value
+	setLabel($ColorRect/MasterVolume/label, 'Master Volume', GameManager.masterVol)
 func _on_backgroundMusic_slider_value_changed(value: float) -> void:
-	Global.bgmVol = value
-	setLabel($ColorRect/BackgroundMusic/label, 'Background Music', Global.bgmVol)
+	GameManager.bgmVol = value
+	setLabel($ColorRect/BackgroundMusic/label, 'Background Music', GameManager.bgmVol)
 func _on_sfxVolume_slider_value_changed(value: float) -> void:
-	Global.sfxVol = value
-	setLabel($ColorRect/SFXVolume/label, 'SFX Volume', Global.sfxVol)
+	GameManager.sfxVol = value
+	setLabel($ColorRect/SFXVolume/label, 'SFX Volume', GameManager.sfxVol)
 
 func closeSettingsMenu() -> void:
-	Global.settingsOpen = false;
+	GameManager.settingsOpen = false;
 	queue_free() 	
 
 func _on_close_pressed() -> void:

@@ -1,12 +1,48 @@
 extends Node
 
-@export var LevelScene : PackedScene
+#GAME MANAGER NODE ACCESS
+#var lvl
+var player
+var bgMan
+var hud
+
+#@export var LevelObjects : PackedScene
+@export var playerStartPos : Vector2
 @export var ExpectedCompletionTime : float
 @export var MaxCompletionTime : float
+var playerScene: PackedScene = preload("res://Objects/obj_player.tscn")
 var backgroundManager: PackedScene = preload("res://Objects/obj_backgroundManager.tscn")
+var gameplayHud: PackedScene = preload("res://Scenes/gameplay_hud.tscn")
+
+var debugMode := true
+var debugHud: PackedScene = preload("res://Scenes/debug_hud.tscn")
+
 
 func _ready():
-	var lvl = LevelScene.instantiate() as Node2D
-	add_child(lvl)
-	var bm = backgroundManager.instantiate() as Node2D
-	lvl.add_child(bm)
+	hud = gameplayHud.instantiate() as CanvasLayer
+	add_child(hud)
+	
+	player = playerScene.instantiate() as CharacterBody2D
+	player.position = playerStartPos
+	add_child(player)
+	
+	bgMan = backgroundManager.instantiate() as Node2D
+	add_child(bgMan)
+	
+	if (debugMode):
+		var dbHud = debugHud.instantiate() as CanvasLayer
+		add_child(dbHud)
+		
+	GameManager.isInMenu = false
+
+#func _ready():
+	#if (LevelObjects):
+		#lvl = LevelObjects.instantiate() as Node2D
+		#add_child(lvl)
+		#
+		#bgMan = backgroundManager.instantiate() as Node2D
+		#lvl.add_child(bgMan)
+	#
+		#hud = gameplayHud.instantiate() as CanvasLayer
+		#lvl.add_child(hud)
+	#else : print('\nERROR:: Missing Scene: Level Objects')

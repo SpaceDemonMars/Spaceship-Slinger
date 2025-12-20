@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if doRelocate:
-		var player = get_parent().get_parent().get_child(1)
+		var player = GameManager.activeLevel.player
 		var playerDir = player.velocity.normalized()
 		var playerPos = player.position
 		var screen = get_viewport_rect()
