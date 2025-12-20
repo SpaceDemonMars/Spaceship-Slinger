@@ -1,8 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck5m2gr4453nq"]
+[gd_scene load_steps=12 format=3 uid="uid://ck5m2gr4453nq"]
 
 [ext_resource type="Script" uid="uid://bl20dvj8polot" path="res://Scripts/gameplay_hud.gd" id="1_6u54k"]
 [ext_resource type="FontFile" uid="uid://cdeayi78jcwd1" path="res://Fonts/space-frigate-font/SpaceFrigate-KVdW.ttf" id="2_7uida"]
 [ext_resource type="FontFile" uid="uid://c1j31hw84v67m" path="res://Fonts/space-frigate-font/SpaceFrigateItalic-2vEW.ttf" id="3_56twx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uida"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56twx"]
+bg_color = Color(0.4392157, 0.69803923, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qvo1"]
+bg_color = Color(0.22352941, 0.22352941, 0.22352941, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx1au"]
+bg_color = Color(0.81079626, 0.89639056, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2soh"]
 
@@ -12,7 +26,6 @@ bg_color = Color(0.99999994, 0.35486352, 0.13953415, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u54k"]
 bg_color = Color(0.2231029, 0.2231029, 0.22310278, 1)
 expand_margin_left = 1.0
-expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 shadow_color = Color(0, 0, 0, 0.27450982)
@@ -23,6 +36,38 @@ bg_color = Color(1, 0.77380913, 0.7223475, 1)
 
 [node name="GameplayHud" type="CanvasLayer"]
 script = ExtResource("1_6u54k")
+
+[node name="Health" type="ProgressBar" parent="."]
+z_index = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -61.0
+offset_right = 265.0
+offset_bottom = -48.5
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_7uida")
+theme_override_styles/fill = SubResource("StyleBoxFlat_56twx")
+value = 50.0
+show_percentage = false
+
+[node name="DelayedHealth" type="ProgressBar" parent="Health"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3qvo1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xx1au")
+value = 65.0
+show_percentage = false
+
+[node name="TimerHealth" type="Timer" parent="Health"]
+wait_time = 0.4
+one_shot = true
 
 [node name="FuelGuage" type="ProgressBar" parent="."]
 z_index = 1
@@ -97,4 +142,5 @@ theme_override_font_sizes/font_size = 30
 text = "1:25:13"
 horizontal_alignment = 3
 
+[connection signal="timeout" from="Health/TimerHealth" to="." method="_on_timer_health_timeout"]
 [connection signal="timeout" from="FuelGuage/UsageDelay" to="." method="_on_usage_delay_timeout"]

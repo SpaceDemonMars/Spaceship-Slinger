@@ -5,7 +5,6 @@ var player: PackedScene = preload("res://Objects/obj_player.tscn")
 var ship : PackedScene = preload("res://Scenes/ss_starter.tscn") 
 
 #menu variables
-var isTimePaused := false
 @onready var gameTimer := 0.0
 var mainMenu: PackedScene = preload("res://Scenes/main_menu.tscn")
 var settingsMenu: PackedScene = preload("res://Scenes/settings_menu.tscn")
@@ -43,15 +42,10 @@ func _ready():
 func _process(delta: float) -> void:
 	get_tree().paused = settingsOpen
 	if (Input.is_action_just_pressed("Settings") and !settingsOpen): openSettingsMenu()
-	if (!settingsOpen and !isInMenu and !isTimePaused):
+	if (!settingsOpen and !isInMenu):
 		gameTimer += delta
 		activeLevel.hud.setTimer(gameTimer)
 		
-
-func sync_hud():
-		activeLevel.hud.setTimer(gameTimer)
-		activeLevel.hud.setFuel(activeLevel.player.fuelCurrent)
-	
 
 func load_levels():
 	var folder = DirAccess.open(levelsFolder)
@@ -104,3 +98,5 @@ func utilConvertTimetoString(time: float) -> String:
 	var s = "%.2f" % time
 	return m + ':' + s
 	
+func playerCrashed():
+	activeLevel.player.takeDamage()
