@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvnf0qvfcfitw"]
+
+[ext_resource type="Texture2D" uid="uid://c40eat1d6d50k" path="res://Assets/Sprites/Effects/icon_plusSmall.png" id="1_032kh"]
+
+[node name="ObjYellowpaint" type="Node2D"]
+
+[node name="IconPlusSmall" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_032kh")

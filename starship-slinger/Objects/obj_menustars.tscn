@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1d1lurvlepja"]
+
+[ext_resource type="Script" uid="uid://vy7tyxej4vk6" path="res://Scripts/menustars.gd" id="1_rqaje"]
+
+[node name="ObjMenustars" type="Node2D"]
+script = ExtResource("1_rqaje")
