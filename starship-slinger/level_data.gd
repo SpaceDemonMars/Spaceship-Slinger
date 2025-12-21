@@ -24,6 +24,7 @@ var debugHud: PackedScene = preload("res://Scenes/debug_hud.tscn")
 
 
 func _ready():
+	GameManager.gameTimer = 0.0
 	hasExpectedTime = ExpectedCompletionTime > 0.0
 	hasMaxTime = MaxCompletionTime > 0.0
 	

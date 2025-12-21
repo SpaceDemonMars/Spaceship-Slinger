@@ -19,6 +19,7 @@ var ship : PackedScene = preload("res://Scenes/ss_starter.tscn")
 @onready var gameTimer := 0.0
 var mainMenu: PackedScene = preload("res://Scenes/main_menu.tscn")
 var settingsMenu: PackedScene = preload("res://Scenes/settings_menu.tscn")
+var levelSelect: PackedScene = preload("res://Scenes/level_select.tscn")
 var winScreen: PackedScene = preload("res://Scenes/win_screen.tscn")
 var loseScreen: PackedScene = preload("res://Scenes/lose_screen.tscn")
 
@@ -64,6 +65,9 @@ func _process(delta: float) -> void:
 
 func openSettingsMenu() ->void:
 	var settings = settingsMenu.instantiate() as CanvasLayer
+	add_child(settings)	
+func openLevelSelect() ->void:
+	var settings = levelSelect.instantiate() as CanvasLayer
 	add_child(settings)	
 
 func destinationEntered():
@@ -144,9 +148,11 @@ func goToMainMenu():
 func goToSelectedLevel():
 	if (selectedLevelIndex >= allLevels.size()):
 		selectedLevelIndex -= 1
-	selectedLevel = allLevels[selectedLevelIndex]
-	if (selectedLevelIndex > unlockedLevelIndex) : unlockedLevelIndex = selectedLevelIndex
-	restartLevel()
+		goToSelectedLevel()
+	else:
+		selectedLevel = allLevels[selectedLevelIndex]
+		if (selectedLevelIndex > unlockedLevelIndex) : unlockedLevelIndex = selectedLevelIndex
+		restartLevel()
 func goToCredits():
 	selectedLevelIndex =0
 	goToMainMenu() #TODO: load credits once implemented
