@@ -19,7 +19,8 @@ extends CanvasLayer
 
 # score = score for delivery
 func popupInit(isBScore : bool = false, isHScore : bool = false, 
-	hasTimeInfo : bool = false, eTime : String = "", aTime : String = "", speed : int = 0) -> void:
+	hasTimeInfo : bool = false, eTime : String = "", aTime : String = "",
+	speed : int = GameManager.SpeedRating.NONE) -> void:
 	GameManager.settingsOpen = true;
 	#scores
 	scoreValue.text = "+%d" % GameManager.levelScore 
@@ -48,7 +49,12 @@ func _process(_delta: float) -> void:
 func closePopUp() -> void:
 	GameManager.settingsOpen = false;
 	get_tree().paused = GameManager.settingsOpen
-	GameManager.gameTimer = 0.0
+	if (GameManager.selectedLevelIndex < GameManager.allLevels.size() - 1):
+		GameManager.selectedLevelIndex += 1
+		GameManager.goToSelectedLevel() 
+	else:
+		GameManager.selectedLevelIndex = 0
+		GameManager.goToCredits()
 	queue_free() 	
 
 

@@ -50,3 +50,8 @@ func _on_gravity_area_area_exited(area: Area2D) -> void:
 				gravityHomeList.remove_at(g)
 				gravityStrList.remove_at(g)
 				break;
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.get_parent().name == "ObjPlayer":
+		GameManager.playerCrashed()

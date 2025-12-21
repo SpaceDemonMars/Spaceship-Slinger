@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2r0latlm48ma"]
+[gd_scene load_steps=5 format=3 uid="uid://c2r0latlm48ma"]
 
 [ext_resource type="Script" uid="uid://blbayg4v6dk1s" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://c1j31hw84v67m" path="res://Fonts/space-frigate-font/SpaceFrigateItalic-2vEW.ttf" id="2_1ehe0"]
 [ext_resource type="PackedScene" uid="uid://d1d1lurvlepja" path="res://Objects/obj_menustars.tscn" id="3_1ehe0"]
+[ext_resource type="FontFile" uid="uid://bh6gp3eaf2n87" path="res://Fonts/snail-mail-ldo-font/SnailMailLdo-Wyav.ttf" id="3_ce3w2"]
 
 [node name="MainMenuRoot" type="Control"]
 layout_mode = 3
@@ -54,7 +55,8 @@ offset_right = -38.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_ce3w2")
+theme_override_font_sizes/font_size = 35
 text = "Highscore: 0"
 horizontal_alignment = 2
 
@@ -71,9 +73,29 @@ offset_right = 257.0
 offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ce3w2")
 theme_override_font_sizes/font_size = 35
 action_mode = 0
 text = "Play"
+
+[node name="Level" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 71.0
+offset_right = 152.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ce3w2")
+theme_override_font_sizes/font_size = 35
+action_mode = 0
+text = "Level 1"
+icon_alignment = 2
 
 [node name="Settings" type="Button" parent="."]
 layout_mode = 1
@@ -81,11 +103,28 @@ offset_left = 20.0
 offset_top = 20.0
 offset_right = 106.0
 offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("3_ce3w2")
 theme_override_font_sizes/font_size = 20
 action_mode = 0
 text = "Settings"
 
+[node name="Credits" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -125.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 51.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 20
+text = "Credits"
+
 [node name="ObjMenustars" parent="." instance=ExtResource("3_1ehe0")]
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Level" to="." method="_on_level_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]

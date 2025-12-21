@@ -25,8 +25,11 @@ shape = SubResource("CircleShape2D_t4x7n")
 texture = ExtResource("1_mes75")
 script = ExtResource("3_65g4h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_65g4h")
 
 [connection signal="area_entered" from="GravityArea" to="." method="_on_gravity_area_area_entered"]
 [connection signal="area_exited" from="GravityArea" to="." method="_on_gravity_area_area_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_hitbox_area_entered"]

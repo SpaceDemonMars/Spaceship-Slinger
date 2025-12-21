@@ -5,6 +5,7 @@ var shipTurnRate
 var fuelTotal
 var fuelCurrent
 var fuelLoss
+var health
 @onready var shipAsset = $Sprite2D
 var GameplayHud #move this to gameManager when made
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 	
 	if GameplayHud :
 		GameplayHud.init_fuel(fuelTotal)
+		GameplayHud.init_HP()
 	
 	
 
@@ -55,7 +57,20 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, 0.5)
 	
 	move_and_slide()
+	
+	checkSoftLocked()
 
+func takeDamage(dmg : int = 1):
+	health -= dmg
+	GameManager.activeLevel.hud.setHP()	
+	if health <= 0:
+		GameManager.playerLost(GameManager.LossCause.DEATH)
+	
+
+func checkSoftLocked():
+	if fuelCurrent <= 0: #out of fuel
+		if velocity == Vector2.ZERO: #no momentum
+			GameManager.playerLost(GameManager.LossCause.SOFTLOCK)
 
 func getShipStats():
 	var shipStats = GameManager.ship.instantiate() as Node
@@ -65,6 +80,8 @@ func getShipStats():
 	fuelTotal = shipStats.maxFuel
 	fuelLoss = shipStats.fuelUseRate
 	fuelCurrent = fuelTotal
+	health = shipStats.health
+	GameManager.activeLevel.hud.setHP()
 	shipAsset.texture = shipStats.shipAsset
 	shipStats.queue_free()
 	

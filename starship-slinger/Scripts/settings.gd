@@ -10,6 +10,11 @@ func _ready() -> void:
 	setSlider($ColorRect/BackgroundMusic/HSlider, GameManager.bgmVol)
 	setLabel($ColorRect/SFXVolume/label, 'SFX Volume', GameManager.sfxVol)
 	setSlider($ColorRect/SFXVolume/HSlider, GameManager.sfxVol)
+	
+	if (GameManager.isInMenu): 
+		$ColorRect/Abandon.visible = false
+		$ColorRect/Restart.visible = false
+		$ColorRect/Reset.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,10 +40,28 @@ func _on_sfxVolume_slider_value_changed(value: float) -> void:
 func closeSettingsMenu() -> void:
 	GameManager.settingsOpen = false;
 	get_tree().paused = GameManager.settingsOpen
+	GameManager.saveGame()
 	queue_free() 	
+
 
 func _on_close_pressed() -> void:
 	closeSettingsMenu()
 func _on_abandon_pressed() -> void:
 	#end current run
 	closeSettingsMenu()
+	GameManager.playerLost(GameManager.LossCause.ABANDONED)
+func _on_restart_pressed() -> void:
+	closeSettingsMenu()
+	GameManager.restartLevel()
+
+
+func _on_reset_pressed() -> void:
+	$ResetConfirmWindow.visible = true
+func _on_cancel_pressed() -> void:
+	$ResetConfirmWindow.visible = false
+func _on_confirm_pressed() -> void:
+	GameManager.saveGame(GameManager.defaultSaveData)
+	GameManager.loadGame()
+	GameManager.goToMainMenu()
+	closeSettingsMenu()
+	queue_free()
