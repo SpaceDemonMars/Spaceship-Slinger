@@ -170,9 +170,104 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_7y5a0")
 text = "Restart Level"
 
+[node name="Reset" type="Button" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -46.0
+offset_right = 147.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_7y5a0")
+text = "Reset Save Data"
+
+[node name="ResetConfirmWindow" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.5
+offset_top = -54.0
+offset_right = 273.5
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29954743, 0.29954746, 0.29954734, 1)
+
+[node name="Header" type="Label" parent="ResetConfirmWindow"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.5
+offset_top = 5.0
+offset_right = 52.5
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7y5a0")
+theme_override_font_sizes/font_size = 30
+text = "Are you sure?"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="ResetConfirmWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.5
+offset_top = -47.5
+offset_right = 228.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "This will reset your level progress and settings preferences.
+It cannot be undone."
+horizontal_alignment = 1
+
+[node name="Confirm" type="Button" parent="ResetConfirmWindow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -44.0
+offset_right = -35.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_7y5a0")
+theme_override_font_sizes/font_size = 20
+text = "Yes, I'm sure."
+
+[node name="Cancel" type="Button" parent="ResetConfirmWindow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = -44.0
+offset_right = 190.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_7y5a0")
+theme_override_font_sizes/font_size = 20
+text = "Nevermind."
+
 [connection signal="value_changed" from="ColorRect/MasterVolume/HSlider" to="." method="_on_masterVolume_slider_value_changed"]
 [connection signal="value_changed" from="ColorRect/BackgroundMusic/HSlider" to="." method="_on_backgroundMusic_slider_value_changed"]
 [connection signal="value_changed" from="ColorRect/SFXVolume/HSlider" to="." method="_on_sfxVolume_slider_value_changed"]
 [connection signal="pressed" from="ColorRect/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ColorRect/Abandon" to="." method="_on_abandon_pressed"]
 [connection signal="pressed" from="ColorRect/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="ColorRect/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="ResetConfirmWindow/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="ResetConfirmWindow/Cancel" to="." method="_on_cancel_pressed"]

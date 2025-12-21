@@ -14,6 +14,7 @@ func _ready() -> void:
 	if (GameManager.isInMenu): 
 		$ColorRect/Abandon.visible = false
 		$ColorRect/Restart.visible = false
+		$ColorRect/Reset.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +43,7 @@ func closeSettingsMenu() -> void:
 	GameManager.saveGame()
 	queue_free() 	
 
+
 func _on_close_pressed() -> void:
 	closeSettingsMenu()
 func _on_abandon_pressed() -> void:
@@ -51,3 +53,15 @@ func _on_abandon_pressed() -> void:
 func _on_restart_pressed() -> void:
 	closeSettingsMenu()
 	GameManager.restartLevel()
+
+
+func _on_reset_pressed() -> void:
+	$ResetConfirmWindow.visible = true
+func _on_cancel_pressed() -> void:
+	$ResetConfirmWindow.visible = false
+func _on_confirm_pressed() -> void:
+	GameManager.saveGame(GameManager.defaultSaveData)
+	GameManager.loadGame()
+	GameManager.goToMainMenu()
+	GameManager.openSettingsMenu()
+	queue_free()

@@ -1,5 +1,15 @@
 extends Node
 
+#default save data
+var defaultSaveData = {
+	"High Score": 0,
+	"Best Score": 0,
+	"Selected Level Index" : 0,
+	"Master Volume": 75,
+	"Background Music Volume": 75,
+	"SFX Volume": 75
+}
+
 #player variables
 var player: PackedScene = preload("res://Objects/obj_player.tscn")
 var ship : PackedScene = preload("res://Scenes/ss_starter.tscn") 
@@ -14,22 +24,22 @@ var loseScreen: PackedScene = preload("res://Scenes/lose_screen.tscn")
 var isInMenu: bool = false
 var settingsOpen: bool = false
 #audio
-var masterVol: float = 0
-var bgmVol: float = 0
-var sfxVol: float = 0
+var masterVol: float = defaultSaveData["Master Volume"]
+var bgmVol: float = defaultSaveData["Background Music Volume"]
+var sfxVol: float = defaultSaveData["SFX Volume"]
 
 #level variables
 #THIS IS TEMPORARILY HARDCODED
 #we could do totalScore = sum(score = expectedTime/actualTime)
 var totalScore: int = 0 #cumulative 
-var highScore: int = 0 #best ^ (without save/load this will always be totalScore)
+var highScore: int = defaultSaveData["High Score"]
 var levelScore: int = 0 # get this from active level data
-var bestScore: int = 0 #best level score
+var bestScore: int = defaultSaveData["Best Score"] #best level score
 
 var selectedLevel : PackedScene
 var activeLevel #nodes only
 var levelsFolder := "res://Levels/"
-var selectedLevelIndex := 0
+var selectedLevelIndex : int = defaultSaveData["Selected Level Index"]
 var allLevels : Array[PackedScene] = []
 
 
@@ -135,7 +145,7 @@ func restartLevel():
 
 #save/load
 @onready var saveDataPath := "user://saveData.save"
-func saveGame():
+func saveGame(saveDefaults : Dictionary = {}):
 	var saveFile = FileAccess.open(saveDataPath, FileAccess.WRITE)
 	var saveData = {
 		"High Score": highScore,
@@ -144,7 +154,7 @@ func saveGame():
 		"Master Volume": masterVol,
 		"Background Music Volume": bgmVol,
 		"SFX Volume": sfxVol
-	}
+	} if (saveDefaults.is_empty()) else saveDefaults
 	var jsonString = JSON.stringify(saveData)
 	saveFile.store_line(jsonString)
 
