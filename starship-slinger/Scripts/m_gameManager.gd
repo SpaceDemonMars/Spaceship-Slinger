@@ -53,9 +53,12 @@ func _process(delta: float) -> void:
 	get_tree().paused = settingsOpen
 	if (Input.is_action_just_pressed("Settings") and !settingsOpen): openSettingsMenu()
 	if (!settingsOpen and !isInMenu):
-		gameTimer += delta
-		activeLevel.hud.setTimer(gameTimer)
-		
+		gameTimer += delta 
+		if (activeLevel.hasMaxTime): 
+			activeLevel.hud.setTimer(activeLevel.MaxCompletionTime - gameTimer)
+			checkMaxTime()
+		else:
+			activeLevel.hud.setTimer(gameTimer)
 
 func load_levels():
 	var folder = DirAccess.open(levelsFolder)
@@ -80,15 +83,33 @@ func openSettingsMenu() ->void:
 
 func destinationEntered():
 	var win = winScreen.instantiate() as CanvasLayer
-	levelScore = (randi() % 20) + 1 #TODO: get this from level data/calculate bonus
+	var speedScore = calculateScore()
 	totalScore += levelScore
 	activeLevel.hud.setScore()
 	add_child(win)
 	win.popupInit(checkBestScore(), checkHighScore(),
-		true, utilConvertTimetoString(30.0), utilConvertTimetoString(gameTimer), 2)
+		true, utilConvertTimetoString(activeLevel.ExpectedCompletionTime), 
+		utilConvertTimetoString(gameTimer), speedScore)
 	#TODO: get time info from lvl data 			#TODO: find way to rate completion time
 	saveGame()
 	
+
+enum SpeedRating {
+	NONE  = 0,
+	FAST = 1,
+	SLOW = 2
+}
+func calculateScore() -> int:
+	var retVal := SpeedRating.NONE
+	if (!activeLevel.hasExpectedTime): 
+		levelScore = activeLevel.goalValue
+	else:
+		levelScore = activeLevel.goalValue * (activeLevel.ExpectedCompletionTime/gameTimer)
+		if (gameTimer <= (activeLevel.ExpectedCompletionTime - activeLevel.scoringMargin)):
+			retVal = SpeedRating.FAST
+		elif (gameTimer >= (activeLevel.ExpectedCompletionTime + activeLevel.scoringMargin)):
+			retVal = SpeedRating.SLOW
+	return retVal
 
 func checkBestScore() -> bool:
 	if (levelScore > bestScore and levelScore != 0) : 
@@ -100,6 +121,9 @@ func checkHighScore() -> bool:
 		highScore = totalScore
 		return true
 	return false
+func checkMaxTime():
+	if (gameTimer >= activeLevel.MaxCompletionTime):
+		playerLost(LossCause.SLOW)
 
 func utilConvertTimetoString(time: float) -> String:
 	@warning_ignore("integer_division")

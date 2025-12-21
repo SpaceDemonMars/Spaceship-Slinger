@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://12etm8lfvekw" path="res://Scripts/debug_hud.gd" id="1_v5w1d"]
 
 [node name="DebugHud" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_v5w1d")
 
 [node name="Pos" type="Label" parent="."]

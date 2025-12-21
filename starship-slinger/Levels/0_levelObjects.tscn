@@ -10,6 +10,9 @@
 [node name="LevelObjects" type="Node2D"]
 script = ExtResource("1_v2pbu")
 playerStartPos = Vector2(575, 325)
+ExpectedCompletionTime = 15.0
+MaxCompletionTime = 30.0
+scoringMargin = 5.0
 
 [node name="ObjBlackhole" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("2_v2pbu")]
 position = Vector2(154, 528)
