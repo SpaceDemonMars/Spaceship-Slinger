@@ -8,6 +8,8 @@
 
 [node name="LvTutorial" type="Node2D"]
 script = ExtResource("1_lhajp")
+ExpectedCompletionTime = 5.0
+MaxCompletionTime = 30.0
 
 [node name="ObjDestination" parent="." instance=ExtResource("2_todhv")]
 position = Vector2(1372, 422)

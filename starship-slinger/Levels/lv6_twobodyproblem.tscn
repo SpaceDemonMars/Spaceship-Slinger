@@ -8,6 +8,8 @@
 
 [node name="Lv6twobody" type="Node2D"]
 script = ExtResource("1_f7asp")
+ExpectedCompletionTime = 15.0
+MaxCompletionTime = 45.0
 
 [node name="ObjGravity" parent="." instance=ExtResource("2_fjjul")]
 position = Vector2(673, 527)
@@ -64,6 +66,5 @@ position = Vector2(423, 875)
 position = Vector2(1931, 1976)
 
 [node name="ObjPlayspace" parent="paint" instance=ExtResource("5_boy8d")]
-visible = false
-position = Vector2(1060.9998, 119.99994)
-scale = Vector2(247.06972, 110.97768)
+position = Vector2(-302, 657)
+scale = Vector2(354.9874, 323.3303)
