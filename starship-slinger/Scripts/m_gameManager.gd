@@ -6,9 +6,9 @@ var defaultSaveData = {
 	"Best Score": 0,
 	"Selected Level Index" : 0,
 	"Unlocked Level Index" : 0,
-	"Master Volume": 75,
-	"Background Music Volume": 75,
-	"SFX Volume": 75
+	"Master Volume": 10,
+	"Background Music Volume": 10,
+	"SFX Volume": 50
 }
 
 #player variables

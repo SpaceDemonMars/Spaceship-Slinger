@@ -39,17 +39,16 @@ text = "Delivery Failed..."
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -242.0
-offset_top = -48.0
-offset_right = -126.0
-offset_bottom = -17.0
+offset_left = -131.0
+offset_top = -90.0
+offset_right = -15.0
+offset_bottom = -59.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_nk27f")
@@ -122,6 +121,7 @@ theme_override_font_sizes/font_size = 30
 text = "High Score!!"
 
 [node name="LossInfo" type="Control" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

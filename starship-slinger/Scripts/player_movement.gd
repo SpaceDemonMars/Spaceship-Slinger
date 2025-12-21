@@ -69,10 +69,11 @@ func takeDamage(dmg : int = 1):
 		GameManager.playerLost(GameManager.LossCause.DEATH)
 	
 
-
+var goalPos
 func updatePointer():
+	if (!goalPos): goalPos = GameManager.activeLevel.goalPos
 	var pointer = get_node("Pointer")
-	var dir = GameManager.activeLevel.goalPos - position
+	var dir = goalPos - position
 	pointer.rotation = deg_to_rad(90) + dir.angle() - rotation
 
 func checkSoftLocked():
