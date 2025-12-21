@@ -10,7 +10,7 @@
 script = ExtResource("1_2o28p")
 
 [node name="ObjDestination" parent="." instance=ExtResource("2_c3rf1")]
-position = Vector2(8500, -5598)
+position = Vector2(8483, -6470)
 
 [node name="ObjGravity" parent="." instance=ExtResource("3_e46cc")]
 position = Vector2(706, -1113)
@@ -29,7 +29,13 @@ position = Vector2(125, -295)
 position = Vector2(2429, -3317)
 
 [node name="ObjYellowpaint3" parent="." instance=ExtResource("4_c3rf1")]
-position = Vector2(6392, -5431)
+position = Vector2(6793, -5780)
+
+[node name="ObjYellowpaint4" parent="." instance=ExtResource("4_c3rf1")]
+position = Vector2(3810, -4489)
+
+[node name="ObjYellowpaint5" parent="." instance=ExtResource("4_c3rf1")]
+position = Vector2(5102, -5187)
 
 [node name="ObjPlayspace" parent="." instance=ExtResource("5_e46cc")]
 position = Vector2(4080.0002, -3412.9998)

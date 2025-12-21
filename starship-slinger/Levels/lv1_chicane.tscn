@@ -31,7 +31,7 @@ position = Vector2(861, -122)
 position = Vector2(1056, 135)
 
 [node name="ObjYellowpaint3" parent="paint" instance=ExtResource("4_630ie")]
-position = Vector2(2308, 142)
+position = Vector2(2247, -103)
 
 [node name="ObjPlayspace" parent="paint" instance=ExtResource("5_wnvt2")]
 position = Vector2(1060.9998, 119.99994)

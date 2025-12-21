@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch54q4ba74g6e"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_f7asp"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_fjjul"]
+[ext_resource type="PackedScene" uid="uid://baehc6ggoilrg" path="res://Objects/obj_destination.tscn" id="3_knl2x"]
+[ext_resource type="PackedScene" uid="uid://bvnf0qvfcfitw" path="res://Objects/obj_yellowpaint.tscn" id="4_ryean"]
+[ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="5_boy8d"]
+
+[node name="Lv6twobody" type="Node2D"]
+script = ExtResource("1_f7asp")
+
+[node name="ObjGravity" parent="." instance=ExtResource("2_fjjul")]
+position = Vector2(673, 527)
+gravityStr = 15.0
+wellSize = 15.0
+
+[node name="ObjGravity2" parent="." instance=ExtResource("2_fjjul")]
+position = Vector2(679, 169)
+gravityEffected = true
+startingSpeed = 300.0
+wellSize = 10.0
+objWeight = 3.0
+
+[node name="ObjGravity3" parent="." instance=ExtResource("2_fjjul")]
+position = Vector2(2025, 1341)
+gravityStr = 15.0
+wellSize = 15.0
+
+[node name="ObjGravity4" parent="." instance=ExtResource("2_fjjul")]
+position = Vector2(2031, 983)
+gravityStr = 5.0
+gravityEffected = true
+startingSpeed = 300.0
+startingDir = -180.0
+wellSize = 10.0
+objWeight = 3.0
+
+[node name="ObjGravity5" parent="." instance=ExtResource("2_fjjul")]
+position = Vector2(3290, 3043)
+gravityStr = 15.0
+wellSize = 15.0
+
+[node name="ObjGravity6" parent="." instance=ExtResource("2_fjjul")]
+position = Vector2(3296, 2685)
+gravityEffected = true
+startingSpeed = 400.0
+startingDir = -180.0
+wellSize = 10.0
+objWeight = 3.0
+
+[node name="ObjDestination" parent="." instance=ExtResource("3_knl2x")]
+position = Vector2(3319, 2136)
+
+[node name="paint" type="Node2D" parent="."]
+position = Vector2(861, -122)
+
+[node name="ObjYellowpaint" parent="paint" instance=ExtResource("4_ryean")]
+position = Vector2(-612, 182)
+
+[node name="ObjYellowpaint2" parent="paint" instance=ExtResource("4_ryean")]
+position = Vector2(423, 875)
+
+[node name="ObjYellowpaint3" parent="paint" instance=ExtResource("4_ryean")]
+position = Vector2(1931, 1976)
+
+[node name="ObjPlayspace" parent="paint" instance=ExtResource("5_boy8d")]
+visible = false
+position = Vector2(1060.9998, 119.99994)
+scale = Vector2(247.06972, 110.97768)
