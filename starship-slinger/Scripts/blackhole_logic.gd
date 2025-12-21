@@ -11,7 +11,7 @@ var col = Color(Color.WHITE, .02)
 func _ready() -> void:
 	if sibling == null:
 		print("Missing Sibling!!")
-	$GravityArea.scale = Vector2(wellSize,wellSize)
+	scale = Vector2(wellSize,wellSize)
 	match colorKey:
 		1:
 			$"GravityArea/GPUParticles2D".process_material.color = Color.BLUE

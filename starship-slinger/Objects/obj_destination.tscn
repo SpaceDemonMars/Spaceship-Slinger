@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://baehc6ggoilrg"]
 
-[ext_resource type="Script" uid="uid://dlpvpau2uy3dq" path="res://Scripts/destination.gd" id="1_tivw4"]
+[ext_resource type="Script" uid="uid://d1tw4sq1u6fyg" path="res://Scripts/destination.gd" id="1_tivw4"]
 [ext_resource type="Texture2D" uid="uid://b6vu6va8fsba5" path="res://Assets/Sprites/Ships/satellite_A.png" id="2_m2ski"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhtlh"]
@@ -10,7 +10,7 @@ size = Vector2(108.66667, 113.00001)
 script = ExtResource("1_tivw4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_vhtlh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
