@@ -17,7 +17,7 @@ gravityStr = 35.0
 wellSize = 15.0
 
 [node name="ObjDestination" parent="." instance=ExtResource("3_dv03m")]
-position = Vector2(-3730, -2874)
+position = Vector2(-2706, -2894)
 
 [node name="paint" type="Node2D" parent="."]
 position = Vector2(861, -122)
@@ -25,16 +25,31 @@ position = Vector2(861, -122)
 [node name="ObjYellowpaint" parent="paint" instance=ExtResource("4_5yfmh")]
 position = Vector2(-859, -96)
 
+[node name="ObjYellowpaint4" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(-869, -2657)
+
 [node name="ObjYellowpaint2" parent="paint" instance=ExtResource("4_5yfmh")]
-position = Vector2(-372, -4354)
+position = Vector2(-372, -4689)
+
+[node name="ObjYellowpaint5" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(-835, -3822)
+
+[node name="ObjYellowpaint6" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(672, -4669)
+
+[node name="ObjYellowpaint7" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(1302, -3901)
+
+[node name="ObjYellowpaint8" parent="paint" instance=ExtResource("4_5yfmh")]
+position = Vector2(544, -2936)
 
 [node name="ObjYellowpaint3" parent="paint" instance=ExtResource("4_5yfmh")]
-position = Vector2(-1864, -2920)
+position = Vector2(-2238, -2762)
 
 [node name="ObjPlayspace" parent="paint" instance=ExtResource("5_sebjf")]
 visible = false
-position = Vector2(-1762.9998, -2354.9998)
-scale = Vector2(414.9168, 302.52847)
+position = Vector2(-1501.0001, -2983)
+scale = Vector2(508.2264, 497.37842)
 
 [node name="ObjBooster" parent="." instance=ExtResource("6_ct37r")]
 position = Vector2(0, -364)

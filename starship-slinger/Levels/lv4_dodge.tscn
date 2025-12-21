@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1pwinpnc6lsy"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_b6xgv"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_6u38b"]
+[ext_resource type="PackedScene" uid="uid://baehc6ggoilrg" path="res://Objects/obj_destination.tscn" id="3_c1hgh"]
+[ext_resource type="PackedScene" uid="uid://bvnf0qvfcfitw" path="res://Objects/obj_yellowpaint.tscn" id="4_u67fj"]
+[ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="5_c717t"]
+[ext_resource type="PackedScene" uid="uid://cms2tpxiskl64" path="res://Objects/obj_Booster.tscn" id="6_yprnh"]
+
+[node name="lv4_dodge" type="Node2D"]
+script = ExtResource("1_b6xgv")
+
+[node name="ObjGravity" parent="." instance=ExtResource("2_6u38b")]
+position = Vector2(9747, -799)
+gravityStr = 100.0
+wellSize = 15.0
+
+[node name="ObjGravity2" parent="." instance=ExtResource("2_6u38b")]
+position = Vector2(3270, 674)
+gravityStr = 100.0
+wellSize = 15.0
+
+[node name="ObjDestination" parent="." instance=ExtResource("3_c1hgh")]
+position = Vector2(21117, 295)
+
+[node name="paint" type="Node2D" parent="."]
+position = Vector2(861, -122)
+
+[node name="ObjYellowpaint" parent="paint" instance=ExtResource("4_u67fj")]
+position = Vector2(-662, 119)
+
+[node name="ObjYellowpaint2" parent="paint" instance=ExtResource("4_u67fj")]
+position = Vector2(1367, -51)
+
+[node name="ObjYellowpaint3" parent="paint" instance=ExtResource("4_u67fj")]
+position = Vector2(5570, 128)
+
+[node name="ObjYellowpaint4" parent="paint" instance=ExtResource("4_u67fj")]
+position = Vector2(14120, 414)
+
+[node name="ObjPlayspace" parent="paint" instance=ExtResource("5_c717t")]
+position = Vector2(9675, 141.00002)
+scale = Vector2(1108.417, 173.44011)
+
+[node name="ObjBooster" parent="." instance=ExtResource("6_yprnh")]
+position = Vector2(420, -2)
+rotation = 1.5707964
+boostStr = 1500.0
+
+[node name="ObjBooster2" parent="." instance=ExtResource("6_yprnh")]
+position = Vector2(3223, -203)
+rotation = 1.5882496
+boostStr = 1500.0
+
+[node name="ObjBooster3" parent="." instance=ExtResource("6_yprnh")]
+position = Vector2(9755, 282)
+rotation = 1.5707964
+boostStr = 1500.0

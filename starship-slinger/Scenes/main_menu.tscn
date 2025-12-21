@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blbayg4v6dk1s" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://c1j31hw84v67m" path="res://Fonts/space-frigate-font/SpaceFrigateItalic-2vEW.ttf" id="2_1ehe0"]
-[ext_resource type="PackedScene" path="res://Objects/obj_menustars.tscn" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://d1d1lurvlepja" path="res://Objects/obj_menustars.tscn" id="3_1ehe0"]
 
 [node name="MainMenuRoot" type="Control"]
 layout_mode = 3

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlj34cb4mbfa5"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_qjmyc"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="2_t1d2b"]
+[ext_resource type="PackedScene" uid="uid://baehc6ggoilrg" path="res://Objects/obj_destination.tscn" id="3_xk8jy"]
+[ext_resource type="PackedScene" uid="uid://bvnf0qvfcfitw" path="res://Objects/obj_yellowpaint.tscn" id="4_0n0sg"]
+[ext_resource type="PackedScene" uid="uid://cv7stsr85j7rf" path="res://Objects/obj_blackhole.tscn" id="4_t1d2b"]
+[ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="5_sh6jr"]
+
+[node name="Lv5warp" type="Node2D"]
+script = ExtResource("1_qjmyc")
+
+[node name="ObjGravity" parent="." instance=ExtResource("2_t1d2b")]
+position = Vector2(712, 775)
+gravityStr = 15.0
+wellSize = 15.0
+
+[node name="ObjDestination" parent="." instance=ExtResource("3_xk8jy")]
+position = Vector2(365, 2077)
+
+[node name="ObjBlackhole" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("4_t1d2b")]
+position = Vector2(1531, 574)
+gravityStr = 30.0
+wellSize = 1.5
+sibling = NodePath("../ObjBlackhole2")
+
+[node name="ObjBlackhole2" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("4_t1d2b")]
+position = Vector2(-1254, 789)
+gravityStr = 20.0
+sibling = NodePath("../ObjBlackhole")
+
+[node name="paint" type="Node2D" parent="."]
+position = Vector2(861, -122)
+
+[node name="ObjYellowpaint" parent="paint" instance=ExtResource("4_0n0sg")]
+position = Vector2(-107, 251)
+
+[node name="ObjYellowpaint2" parent="paint" instance=ExtResource("4_0n0sg")]
+position = Vector2(-1299, 1532)
+
+[node name="ObjPlayspace" parent="paint" instance=ExtResource("5_sh6jr")]
+position = Vector2(-497.00003, 1069)
+scale = Vector2(247.06972, 182.53767)
