@@ -11,7 +11,9 @@ func _ready() -> void:
 	setLabel($ColorRect/SFXVolume/label, 'SFX Volume', GameManager.sfxVol)
 	setSlider($ColorRect/SFXVolume/HSlider, GameManager.sfxVol)
 	
-	if (GameManager.isInMenu): $ColorRect/Abandon.visible = false
+	if (GameManager.isInMenu): 
+		$ColorRect/Abandon.visible = false
+		$ColorRect/Restart.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,3 +47,6 @@ func _on_abandon_pressed() -> void:
 	#end current run
 	closeSettingsMenu()
 	GameManager.playerLost(GameManager.LossCause.ABANDONED)
+func _on_restart_pressed() -> void:
+	closeSettingsMenu()
+	GameManager.restartLevel()

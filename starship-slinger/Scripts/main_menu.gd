@@ -1,7 +1,6 @@
 extends Control
 
 
-var playScene
 @onready var settingsButton = $Settings
 @onready var playButton = $Play
 @onready var highScore = $Highscore
@@ -11,7 +10,7 @@ func _ready() -> void:
 	if (GameManager.highScore > 0) :
 		highScore.text = 'Highscore: ' + str(GameManager.highScore)
 	else : highScore.visible = false
-	playScene = GameManager.allLevels[0]
+	GameManager.selectedLevel = GameManager.allLevels[0]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +20,7 @@ func _process(_delta: float) -> void:
 
 func change_scene():
 	#currently defaults to dev_testing, change this in final
-	GameManager.activeLevel = playScene.instantiate() as Node2D
+	GameManager.activeLevel = GameManager.selectedLevel.instantiate() as Node2D
 	get_parent().add_child(GameManager.activeLevel)
 	queue_free()
 

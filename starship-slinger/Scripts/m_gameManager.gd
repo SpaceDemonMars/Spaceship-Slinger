@@ -25,7 +25,9 @@ var totalScore: int = 0 #cumulative
 var highScore: int = 0 #best ^ (without save/load this will always be totalScore)
 var levelScore: int = 0 # get this from active level data
 var bestScore: int = 0 #best level score
-var activeLevel
+
+var selectedLevel : PackedScene
+var activeLevel #nodes only
 var levelsFolder := "res://Levels/"
 var playLevel
 var allLevels : Array[PackedScene] = []
@@ -113,9 +115,16 @@ func playerLost(cause : int = LossCause.NONE):
 func goToMainMenu():
 	
 	var menu = mainMenu.instantiate() as Node
-	add_child(menu)
 	if (activeLevel): activeLevel.queue_free()
 	activeLevel = menu
+	add_child(activeLevel)
 	levelScore = 0
 	totalScore = 0
 	isInMenu = true
+
+func restartLevel():
+	var levelReload = selectedLevel.instantiate() as Node
+	if (activeLevel): activeLevel.queue_free()
+	activeLevel = levelReload
+	add_child(activeLevel)
+	
