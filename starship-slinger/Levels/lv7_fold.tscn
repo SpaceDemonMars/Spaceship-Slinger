@@ -69,9 +69,8 @@ position = Vector2(-318, -1072)
 position = Vector2(942, 2983)
 
 [node name="ObjPlayspace" parent="paint" instance=ExtResource("6_skv8p")]
-visible = false
-position = Vector2(-497.00003, 1069)
-scale = Vector2(247.06972, 182.53767)
+position = Vector2(1726, 405)
+scale = Vector2(-838.277, 564.026)
 
 [node name="ObjBlackhole3" parent="." node_paths=PackedStringArray("sibling") instance=ExtResource("4_2kyjv")]
 position = Vector2(-4482, 1963)

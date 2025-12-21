@@ -13,7 +13,7 @@ script = ExtResource("1_qjmyc")
 [node name="ObjGravity" parent="." instance=ExtResource("2_t1d2b")]
 position = Vector2(712, 775)
 gravityStr = 15.0
-wellSize = 15.0
+wellSize = 20.0
 
 [node name="ObjDestination" parent="." instance=ExtResource("3_xk8jy")]
 position = Vector2(365, 2077)
@@ -33,11 +33,15 @@ sibling = NodePath("../ObjBlackhole")
 position = Vector2(861, -122)
 
 [node name="ObjYellowpaint" parent="paint" instance=ExtResource("4_0n0sg")]
-position = Vector2(-107, 251)
+position = Vector2(227, 418)
+
+[node name="ObjYellowpaint3" parent="paint" instance=ExtResource("4_0n0sg")]
+position = Vector2(-563, 134)
 
 [node name="ObjYellowpaint2" parent="paint" instance=ExtResource("4_0n0sg")]
 position = Vector2(-1299, 1532)
 
 [node name="ObjPlayspace" parent="paint" instance=ExtResource("5_sh6jr")]
+visible = false
 position = Vector2(-497.00003, 1069)
 scale = Vector2(247.06972, 182.53767)
