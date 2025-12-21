@@ -29,11 +29,12 @@ var bestScore: int = 0 #best level score
 var selectedLevel : PackedScene
 var activeLevel #nodes only
 var levelsFolder := "res://Levels/"
-var playLevel
+var selectedLevelIndex := 0
 var allLevels : Array[PackedScene] = []
 
 
 func _ready():
+	loadGame()
 	load_levels()
 	#load level
 	goToMainMenu()
@@ -76,6 +77,7 @@ func destinationEntered():
 	win.popupInit(checkBestScore(), checkHighScore(),
 		true, utilConvertTimetoString(30.0), utilConvertTimetoString(gameTimer), 2)
 	#TODO: get time info from lvl data 			#TODO: find way to rate completion time
+	saveGame()
 	
 
 func checkBestScore() -> bool:
@@ -110,6 +112,7 @@ func playerLost(cause : int = LossCause.NONE):
 	var lose = loseScreen.instantiate() as CanvasLayer
 	add_child(lose)
 	lose.popupInit(checkHighScore(), cause)
+	saveGame()
 
 
 func goToMainMenu():
@@ -128,3 +131,35 @@ func restartLevel():
 	activeLevel = levelReload
 	add_child(activeLevel)
 	
+
+
+#save/load
+@onready var saveDataPath := "user://saveData.save"
+func saveGame():
+	var saveFile = FileAccess.open(saveDataPath, FileAccess.WRITE)
+	var saveData = {
+		"High Score": highScore,
+		"Best Score": bestScore,
+		"Selected Level Index" : selectedLevelIndex,
+		"Master Volume": masterVol,
+		"Background Music Volume": bgmVol,
+		"SFX Volume": sfxVol
+	}
+	var jsonString = JSON.stringify(saveData)
+	saveFile.store_line(jsonString)
+
+func loadGame():
+	if !FileAccess.file_exists(saveDataPath) : return #file DNE
+	
+	var saveFile = FileAccess.open(saveDataPath, FileAccess.READ)
+	#we'd need this line if our save data was more than one dictionary
+	#while saveFile.get_position() < saveFile.get_length(): 
+	var jsonString = saveFile.get_line()
+	var loadData = JSON.parse_string(jsonString)
+	
+	highScore = loadData["High Score"]
+	bestScore = loadData["Best Score"]
+	selectedLevelIndex = loadData["Selected Level Index"]
+	masterVol = loadData["Master Volume"]
+	bgmVol = loadData["Background Music Volume"]
+	sfxVol = loadData["SFX Volume"]
