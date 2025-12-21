@@ -9,7 +9,8 @@ var ship : PackedScene = preload("res://Scenes/ss_starter.tscn")
 var mainMenu: PackedScene = preload("res://Scenes/main_menu.tscn")
 var settingsMenu: PackedScene = preload("res://Scenes/settings_menu.tscn")
 var winScreen: PackedScene = preload("res://Scenes/win_screen.tscn")
-#win/lose screens
+var loseScreen: PackedScene = preload("res://Scenes/lose_screen.tscn")
+
 var isInMenu: bool = false
 var settingsOpen: bool = false
 #audio
@@ -85,7 +86,7 @@ func checkBestScore() -> bool:
 		return true
 	return false
 func checkHighScore() -> bool:
-	if (totalScore > highScore) : 
+	if (totalScore >= highScore) : 
 		highScore = totalScore
 		return true
 	return false
@@ -100,3 +101,13 @@ func utilConvertTimetoString(time: float) -> String:
 	
 func playerCrashed():
 	activeLevel.player.takeDamage()
+
+enum LossCause {
+	NONE  = 0,
+	DEATH = 1,
+	SLOW = 2,
+	SOFTLOCK = 3 }
+func playerLost(cause : int = LossCause.NONE):
+	var lose = loseScreen.instantiate() as CanvasLayer
+	add_child(lose)
+	lose.popupInit(checkHighScore(), cause)

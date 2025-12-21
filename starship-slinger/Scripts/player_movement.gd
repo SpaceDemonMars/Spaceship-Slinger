@@ -57,13 +57,20 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, 0.5)
 	
 	move_and_slide()
+	
+	checkSoftLocked()
 
 func takeDamage(dmg : int = 1):
 	health -= dmg
 	GameManager.activeLevel.hud.setHP()	
 	if health <= 0:
-		pass
+		GameManager.playerLost(GameManager.LossCause.DEATH)
 	
+
+func checkSoftLocked():
+	if fuelCurrent <= 0: #out of fuel
+		if velocity == Vector2.ZERO: #no momentum
+			GameManager.playerLost(GameManager.LossCause.SOFTLOCK)
 
 func getShipStats():
 	var shipStats = GameManager.ship.instantiate() as Node

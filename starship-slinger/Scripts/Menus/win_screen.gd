@@ -17,9 +17,16 @@ extends CanvasLayer
 @export var slowText : String
 
 
+enum SpeedRating {
+	NONE  = 0,
+	FAST = 1,
+	SLOW = 2
+}
+
 # score = score for delivery
 func popupInit(isBScore : bool = false, isHScore : bool = false, 
-	hasTimeInfo : bool = false, eTime : String = "", aTime : String = "", speed : int = 0) -> void:
+	hasTimeInfo : bool = false, eTime : String = "", aTime : String = "",
+	speed : int = SpeedRating.NONE) -> void:
 	GameManager.settingsOpen = true;
 	#scores
 	scoreValue.text = "+%d" % GameManager.levelScore 

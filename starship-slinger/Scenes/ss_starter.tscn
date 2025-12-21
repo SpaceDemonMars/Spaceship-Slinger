@@ -10,4 +10,4 @@ maxFuel = 100
 fuelUseRate = 5
 turnSpeed = 5
 acceleration = 10
-health = 7
+health = 1
