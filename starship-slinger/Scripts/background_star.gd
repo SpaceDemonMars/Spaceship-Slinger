@@ -14,15 +14,26 @@ func _ready() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if doRelocate:
-		var player = GameManager.activeLevel.player
-		var playerDir = player.velocity.normalized()
-		var playerPos = player.position
-		var screen = get_viewport_rect()
-		
-		var newPosCenter = playerPos + playerDir * screen.size.x
-		var newPos : Vector2
-		newPos.x = randf_range(newPosCenter.x - spawnRange, newPosCenter.x + spawnRange)
-		newPos.y = randf_range(newPosCenter.y - spawnRange, newPosCenter.y + spawnRange)
-		
-		position = newPos
+		relocate()
+		$Timer.start()
 		#print(newPos)
+
+func relocate() -> void:
+	var player = GameManager.activeLevel.player
+	var playerDir = player.velocity.normalized()
+	var playerPos = player.position
+	var screen = get_viewport_rect()
+	
+	var newPosCenter = playerPos + playerDir * screen.size.x
+	var newPos : Vector2
+	newPos.x = randf_range(newPosCenter.x - spawnRange, newPosCenter.x + spawnRange)
+	newPos.y = randf_range(newPosCenter.y - spawnRange, newPosCenter.y + spawnRange)
+	
+	position = newPos
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	$Timer.stop()
+
+func _on_timer_timeout() -> void:
+	relocate()
+	$Timer.start()

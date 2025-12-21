@@ -20,7 +20,6 @@ var ship : PackedScene = preload("res://Scenes/ss_starter.tscn")
 var mainMenu: PackedScene = preload("res://Scenes/main_menu.tscn")
 var settingsMenu: PackedScene = preload("res://Scenes/settings_menu.tscn")
 var levelSelect: PackedScene = preload("res://Scenes/level_select.tscn")
-var information: PackedScene = preload("res://Scenes/tutorial.tscn")
 var winScreen: PackedScene = preload("res://Scenes/win_screen.tscn")
 var loseScreen: PackedScene = preload("res://Scenes/lose_screen.tscn")
 var creditsScreen: PackedScene = preload("res://Scenes/credits_screen.tscn")
@@ -30,11 +29,7 @@ var settingsOpen: bool = false
 #audio
 var masterVol: float = defaultSaveData["Master Volume"]
 var bgmVol: float = defaultSaveData["Background Music Volume"]
-var bgmLoad = preload("res://Scenes/bgm_player.tscn")
-var bgmPlayer
 var sfxVol: float = defaultSaveData["SFX Volume"]
-var sfxLoad = preload("res://Scenes/sfx_player.tscn")
-var sfxPlayer
 
 #level variables
 var totalScore: int = 0 #cumulative 
@@ -45,19 +40,15 @@ var bestScore: int = defaultSaveData["Best Score"] #best level score
 var selectedLevel : PackedScene
 var activeLevel #nodes only
 #IF I AM ASLEEP WHEN YOU MERGE YOUR LEVELS, UNCOMMENT THE FILEPATH BELOW
-var levelsFolder := "res://TESTINGLEVELS/"#"res://Levels/"
+var levelsFolder := "res://Levels/"
 var selectedLevelIndex : int = defaultSaveData["Selected Level Index"]
 var allLevels : Array[PackedScene] = []
 var unlockedLevelIndex: int = defaultSaveData["Unlocked Level Index"]
 
 
 func _ready():
-	bgmPlayer = bgmLoad.instantiate() as AudioStreamPlayer
-	add_child(bgmPlayer)
-	sfxPlayer = sfxLoad.instantiate() as AudioStreamPlayer
-	add_child(sfxPlayer)
+	saveGame()
 	loadGame()
-	load_levels()
 	#load level
 	selectedLevel = allLevels[selectedLevelIndex]
 	goToMainMenu()
@@ -80,9 +71,6 @@ func openSettingsMenu() ->void:
 func openLevelSelect() ->void:
 	var settings = levelSelect.instantiate() as CanvasLayer
 	add_child(settings)	
-func openInfoBoard():
-	var info = information.instantiate() as CanvasLayer
-	add_child(info)
 
 func destinationEntered():
 	var win = winScreen.instantiate() as CanvasLayer
@@ -134,7 +122,7 @@ func utilConvertTimetoString(time: float) -> String:
 	var m = "%d" % minutes
 	var s = "%.2f" % time
 	return m + ':' + s
-
+	
 func playerCrashed():
 	activeLevel.player.takeDamage()
 
@@ -183,13 +171,6 @@ func restartLevel():
 	add_child(activeLevel)
 	
 
-func updateBGMVolume():
-	var scaledVolume = (bgmVol/100.0 * masterVol/100.0)
-	bgmPlayer.volume_linear = scaledVolume
-func updateSFXVolume():
-	#var scaledVolume = (sfxVol/100.0 * masterVol/100.0)
-	#sfxLoad.volume_linear = scaledVolume
-	pass
 
 #save/load
 @onready var saveDataPath := "user://saveData.save"
@@ -224,8 +205,8 @@ func loadGame():
 	bgmVol = loadData["Background Music Volume"]
 	sfxVol = loadData["SFX Volume"]
 	
-	updateBGMVolume()
-	updateSFXVolume()
+	load_levels()
+		
 
 func load_levels():
 	if (!allLevels.is_empty()): allLevels.clear()
