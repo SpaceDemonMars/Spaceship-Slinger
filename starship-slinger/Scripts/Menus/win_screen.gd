@@ -56,6 +56,7 @@ func closePopUp() -> void:
 	GameManager.settingsOpen = false;
 	get_tree().paused = GameManager.settingsOpen
 	GameManager.gameTimer = 0.0
+	GameManager.goToMainMenu() #TODO: have this load next level instead of main menu
 	queue_free() 	
 
 

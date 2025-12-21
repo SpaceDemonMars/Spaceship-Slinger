@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2r0latlm48ma"]
+[gd_scene load_steps=5 format=3 uid="uid://c2r0latlm48ma"]
 
 [ext_resource type="Script" uid="uid://blbayg4v6dk1s" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://c1j31hw84v67m" path="res://Fonts/space-frigate-font/SpaceFrigateItalic-2vEW.ttf" id="2_1ehe0"]
-[ext_resource type="PackedScene" path="res://Objects/obj_menustars.tscn" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://d1d1lurvlepja" path="res://Objects/obj_menustars.tscn" id="3_1ehe0"]
+[ext_resource type="FontFile" uid="uid://bh6gp3eaf2n87" path="res://Fonts/snail-mail-ldo-font/SnailMailLdo-Wyav.ttf" id="3_ce3w2"]
 
 [node name="MainMenuRoot" type="Control"]
 layout_mode = 3
@@ -54,7 +55,8 @@ offset_right = -38.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_ce3w2")
+theme_override_font_sizes/font_size = 35
 text = "Highscore: 0"
 horizontal_alignment = 2
 
@@ -71,6 +73,7 @@ offset_right = 257.0
 offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ce3w2")
 theme_override_font_sizes/font_size = 35
 action_mode = 0
 text = "Play"
@@ -81,6 +84,7 @@ offset_left = 20.0
 offset_top = 20.0
 offset_right = 106.0
 offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("3_ce3w2")
 theme_override_font_sizes/font_size = 20
 action_mode = 0
 text = "Settings"

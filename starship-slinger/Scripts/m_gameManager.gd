@@ -34,11 +34,7 @@ var allLevels : Array[PackedScene] = []
 func _ready():
 	load_levels()
 	#load level
-	activeLevel = mainMenu.instantiate() as Node
-	add_child(activeLevel)
-	isInMenu = true
-	#sync hud
-	#activeLevel.lvl.hud.setTimer(gameTimer)
+	goToMainMenu()
 
 func _process(delta: float) -> void:
 	get_tree().paused = settingsOpen
@@ -81,12 +77,12 @@ func destinationEntered():
 	
 
 func checkBestScore() -> bool:
-	if (levelScore > bestScore) : 
+	if (levelScore > bestScore and levelScore != 0) : 
 		bestScore = levelScore
 		return true
 	return false
 func checkHighScore() -> bool:
-	if (totalScore >= highScore) : 
+	if (totalScore >= highScore and totalScore != 0) : 
 		highScore = totalScore
 		return true
 	return false
@@ -106,8 +102,18 @@ enum LossCause {
 	NONE  = 0,
 	DEATH = 1,
 	SLOW = 2,
-	SOFTLOCK = 3 }
+	SOFTLOCK = 3,
+	ABANDONED = 4 }
 func playerLost(cause : int = LossCause.NONE):
 	var lose = loseScreen.instantiate() as CanvasLayer
 	add_child(lose)
 	lose.popupInit(checkHighScore(), cause)
+
+
+func goToMainMenu():
+	
+	var menu = mainMenu.instantiate() as Node
+	add_child(menu)
+	if (activeLevel): activeLevel.queue_free()
+	activeLevel = menu
+	isInMenu = true

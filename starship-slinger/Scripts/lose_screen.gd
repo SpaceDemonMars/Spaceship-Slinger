@@ -10,7 +10,8 @@ extends CanvasLayer
 var causeText := ["", 
 	"Ship Destroyed...", 
 	"Exceeded Time Limit...",
-	"Out of Fuel..."]
+	"Out of Fuel...",
+	"Delivery Abandoned..."]
 
 # score = score for delivery
 func popupInit(isHScore : bool = false, cause : int = GameManager.LossCause.NONE) -> void:
@@ -32,7 +33,7 @@ func closePopUp() -> void:
 	GameManager.settingsOpen = false;
 	get_tree().paused = GameManager.settingsOpen
 	GameManager.gameTimer = 0.0
-	#TODO: make this send u to main menu
+	GameManager.goToMainMenu()
 	queue_free() 	
 
 
