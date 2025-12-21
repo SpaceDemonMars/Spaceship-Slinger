@@ -30,7 +30,11 @@ var settingsOpen: bool = false
 #audio
 var masterVol: float = defaultSaveData["Master Volume"]
 var bgmVol: float = defaultSaveData["Background Music Volume"]
+var bgmLoad = preload("res://Scenes/bgm_player.tscn")
+var bgmPlayer
 var sfxVol: float = defaultSaveData["SFX Volume"]
+var sfxLoad = preload("res://Scenes/sfx_player.tscn")
+var sfxPlayer
 
 #level variables
 var totalScore: int = 0 #cumulative 
@@ -48,6 +52,10 @@ var unlockedLevelIndex: int = defaultSaveData["Unlocked Level Index"]
 
 
 func _ready():
+	bgmPlayer = bgmLoad.instantiate() as AudioStreamPlayer
+	add_child(bgmPlayer)
+	sfxPlayer = sfxLoad.instantiate() as AudioStreamPlayer
+	add_child(sfxPlayer)
 	loadGame()
 	load_levels()
 	#load level
@@ -126,7 +134,7 @@ func utilConvertTimetoString(time: float) -> String:
 	var m = "%d" % minutes
 	var s = "%.2f" % time
 	return m + ':' + s
-	
+
 func playerCrashed():
 	activeLevel.player.takeDamage()
 
@@ -175,6 +183,13 @@ func restartLevel():
 	add_child(activeLevel)
 	
 
+func updateBGMVolume():
+	var scaledVolume = (bgmVol/100.0 * masterVol/100.0)
+	bgmPlayer.volume_linear = scaledVolume
+func updateSFXVolume():
+	#var scaledVolume = (sfxVol/100.0 * masterVol/100.0)
+	#sfxLoad.volume_linear = scaledVolume
+	pass
 
 #save/load
 @onready var saveDataPath := "user://saveData.save"
@@ -208,7 +223,9 @@ func loadGame():
 	masterVol = loadData["Master Volume"]
 	bgmVol = loadData["Background Music Volume"]
 	sfxVol = loadData["SFX Volume"]
-		
+	
+	updateBGMVolume()
+	updateSFXVolume()
 
 func load_levels():
 	if (!allLevels.is_empty()): allLevels.clear()

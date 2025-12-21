@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bstn6uxghfcd2"]
+
+[ext_resource type="AudioStream" uid="uid://dfoi5elbyl2lo" path="res://Audio/space-funky-187525.mp3" id="1_7elu1"]
+
+[node name="BGM_Player" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_7elu1")
+autoplay = true
+parameters/looping = true

@@ -29,12 +29,16 @@ func setSlider(slider: HSlider, value: float) -> void:
 
 func _on_masterVolume_slider_value_changed(value: float) -> void:
 	GameManager.masterVol = value
+	GameManager.updateBGMVolume()
+	GameManager.updateSFXVolume()
 	setLabel($ColorRect/MasterVolume/label, 'Master Volume', GameManager.masterVol)
 func _on_backgroundMusic_slider_value_changed(value: float) -> void:
 	GameManager.bgmVol = value
+	GameManager.updateBGMVolume()
 	setLabel($ColorRect/BackgroundMusic/label, 'Background Music', GameManager.bgmVol)
 func _on_sfxVolume_slider_value_changed(value: float) -> void:
 	GameManager.sfxVol = value
+	GameManager.updateSFXVolume()
 	setLabel($ColorRect/SFXVolume/label, 'SFX Volume', GameManager.sfxVol)
 
 func closeSettingsMenu() -> void:
