@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxg87ju51gjo6"]
+[gd_scene load_steps=8 format=3 uid="uid://cxg87ju51gjo6"]
 
 [ext_resource type="Script" uid="uid://dxhhhxbv7260u" path="res://Scripts/player_movement.gd" id="1_mir30"]
 [ext_resource type="Texture2D" uid="uid://jnhk0vc5yrgj" path="res://Assets/Sprites/Ships/ship_A.png" id="2_75kfv"]
 [ext_resource type="Script" uid="uid://brm2hi0bl3uhw" path="res://Scripts/area_warning.gd" id="3_cfy34"]
 [ext_resource type="Texture2D" uid="uid://b0rekdoomrtqh" path="res://Assets/Sprites/Effects/icon_exclamationSmall.png" id="4_l56h4"]
+[ext_resource type="Texture2D" uid="uid://bhnbn6s51lr5w" path="res://Assets/Sprites/Ships/ship_B.png" id="5_l56h4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfy34"]
 radius = 25.0
@@ -28,6 +29,7 @@ shape = SubResource("CircleShape2D_cfy34")
 shape = SubResource("CircleShape2D_mir30")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
@@ -46,6 +48,14 @@ texture = ExtResource("4_l56h4")
 [node name="IconExclamationSmall3" type="Sprite2D" parent="WarningContainer"]
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("4_l56h4")
+
+[node name="Pointer" type="Node2D" parent="."]
+
+[node name="ShipB" type="Sprite2D" parent="Pointer"]
+modulate = Color(1, 0.4509804, 0.25490198, 1)
+position = Vector2(0, -64)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_l56h4")
 
 [connection signal="area_entered" from="GravityArea" to="." method="_on_gravity_area_area_entered"]
 [connection signal="area_exited" from="GravityArea" to="." method="_on_gravity_area_area_exited"]

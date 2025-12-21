@@ -39,3 +39,6 @@ func closePopUp() -> void:
 
 func _on_button_pressed() -> void:
 	closePopUp() # Replace with function body.
+func _on_restart_pressed() -> void:
+	closePopUp()
+	GameManager.restartLevel()

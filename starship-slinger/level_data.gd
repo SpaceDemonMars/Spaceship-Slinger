@@ -5,6 +5,7 @@ extends Node
 var player
 var bgMan
 var hud
+var goalPos
 
 #@export var LevelObjects : PackedScene
 @export var playerStartPos : Vector2
@@ -37,6 +38,8 @@ func _ready():
 	
 	bgMan = backgroundManager.instantiate() as Node2D
 	add_child(bgMan)
+	
+	goalPos = get_node("ObjDestination").position
 	
 	if (debugMode):
 		var dbHud = debugHud.instantiate() as CanvasLayer

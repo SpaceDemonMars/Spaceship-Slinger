@@ -58,6 +58,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	updatePointer()
+	
 	checkSoftLocked()
 
 func takeDamage(dmg : int = 1):
@@ -66,6 +68,12 @@ func takeDamage(dmg : int = 1):
 	if health <= 0:
 		GameManager.playerLost(GameManager.LossCause.DEATH)
 	
+
+
+func updatePointer():
+	var pointer = get_node("Pointer")
+	var dir = GameManager.activeLevel.goalPos - position
+	pointer.rotation = deg_to_rad(90) + dir.angle() - rotation
 
 func checkSoftLocked():
 	if fuelCurrent <= 0: #out of fuel

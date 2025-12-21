@@ -39,20 +39,37 @@ text = "Delivery Failed..."
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -94.0
+offset_left = -242.0
+offset_top = -48.0
+offset_right = -126.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_nk27f")
+text = "Main Menu"
+
+[node name="Restart" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -113.0
 offset_top = -46.0
 offset_right = -15.0
 offset_bottom = -15.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_nk27f")
-text = "Continue"
+text = "Restart"
 
 [node name="ScoreLabel" type="Label" parent="Panel"]
 layout_mode = 1
@@ -105,7 +122,6 @@ theme_override_font_sizes/font_size = 30
 text = "High Score!!"
 
 [node name="LossInfo" type="Control" parent="Panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -143,3 +159,4 @@ text = "Ship Destroyed..."
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Restart" to="." method="_on_restart_pressed"]
