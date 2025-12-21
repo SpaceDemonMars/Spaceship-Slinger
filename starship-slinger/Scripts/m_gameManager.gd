@@ -116,4 +116,6 @@ func goToMainMenu():
 	add_child(menu)
 	if (activeLevel): activeLevel.queue_free()
 	activeLevel = menu
+	levelScore = 0
+	totalScore = 0
 	isInMenu = true
