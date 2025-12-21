@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwhngxchp84m1"]
+[gd_scene load_steps=7 format=3 uid="uid://7wenp5a5seqt"]
 
 [ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_v2pbu"]
 [ext_resource type="PackedScene" uid="uid://cv7stsr85j7rf" path="res://Objects/obj_blackhole.tscn" id="2_v2pbu"]

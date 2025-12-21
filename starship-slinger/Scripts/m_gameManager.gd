@@ -45,7 +45,7 @@ var bestScore: int = defaultSaveData["Best Score"] #best level score
 var selectedLevel : PackedScene
 var activeLevel #nodes only
 #IF I AM ASLEEP WHEN YOU MERGE YOUR LEVELS, UNCOMMENT THE FILEPATH BELOW
-var levelsFolder := "res://TESTINGLEVELS/"#"res://Levels/"
+var levelsFolder := "res://Levels/"
 var selectedLevelIndex : int = defaultSaveData["Selected Level Index"]
 var allLevels : Array[PackedScene] = []
 var unlockedLevelIndex: int = defaultSaveData["Unlocked Level Index"]
