@@ -63,5 +63,5 @@ func _on_confirm_pressed() -> void:
 	GameManager.saveGame(GameManager.defaultSaveData)
 	GameManager.loadGame()
 	GameManager.goToMainMenu()
-	GameManager.openSettingsMenu()
+	closeSettingsMenu()
 	queue_free()

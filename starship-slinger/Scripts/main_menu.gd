@@ -10,7 +10,6 @@ func _ready() -> void:
 	if (GameManager.highScore > 0) :
 		highScore.text = 'Highscore: ' + str(GameManager.highScore)
 	else : highScore.visible = false
-	GameManager.selectedLevel = GameManager.allLevels[0]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,10 +18,7 @@ func _process(_delta: float) -> void:
 	playButton.visible = !GameManager.settingsOpen
 
 func change_scene():
-	#currently defaults to dev_testing, change this in final
-	GameManager.activeLevel = GameManager.selectedLevel.instantiate() as Node2D
-	get_parent().add_child(GameManager.activeLevel)
-	queue_free()
+	GameManager.goToSelectedLevel()
 
 func _on_play_pressed() -> void:
 	call_deferred("change_scene") # Replace with function body.

@@ -5,6 +5,7 @@ var defaultSaveData = {
 	"High Score": 0,
 	"Best Score": 0,
 	"Selected Level Index" : 0,
+	"Unlocked Level Index" : 0,
 	"Master Volume": 75,
 	"Background Music Volume": 75,
 	"SFX Volume": 75
@@ -29,8 +30,6 @@ var bgmVol: float = defaultSaveData["Background Music Volume"]
 var sfxVol: float = defaultSaveData["SFX Volume"]
 
 #level variables
-#THIS IS TEMPORARILY HARDCODED
-#we could do totalScore = sum(score = expectedTime/actualTime)
 var totalScore: int = 0 #cumulative 
 var highScore: int = defaultSaveData["High Score"]
 var levelScore: int = 0 # get this from active level data
@@ -38,15 +37,17 @@ var bestScore: int = defaultSaveData["Best Score"] #best level score
 
 var selectedLevel : PackedScene
 var activeLevel #nodes only
-var levelsFolder := "res://Levels/"
+#IF I AM ASLEEP WHEN YOU MERGE YOUR LEVELS, UNCOMMENT THE FILEPATH BELOW
+var levelsFolder := "res://TESTINGLEVELS/"#"res://Levels/"
 var selectedLevelIndex : int = defaultSaveData["Selected Level Index"]
 var allLevels : Array[PackedScene] = []
+var unlockedLevelIndex: int = defaultSaveData["Unlocked Level Index"]
 
 
 func _ready():
 	loadGame()
-	load_levels()
 	#load level
+	selectedLevel = allLevels[selectedLevelIndex]
 	goToMainMenu()
 
 func _process(delta: float) -> void:
@@ -60,22 +61,6 @@ func _process(delta: float) -> void:
 		else:
 			activeLevel.hud.setTimer(gameTimer)
 
-func load_levels():
-	var folder = DirAccess.open(levelsFolder)
-	if folder:
-		folder.list_dir_begin()
-		var file_name = folder.get_next()
-		while file_name != "":
-			# Check for scene file extensions
-			if file_name.ends_with(".tscn") or file_name.ends_with(".scn"):
-				var full_path = levelsFolder + file_name
-				# Use ResourceLoader.load to load the scene dynamically
-				var packed_scene: PackedScene = ResourceLoader.load(full_path)
-				if packed_scene:
-					allLevels.append(packed_scene)
-			file_name = folder.get_next()
-		folder.list_dir_end()
-		
 
 func openSettingsMenu() ->void:
 	var settings = settingsMenu.instantiate() as CanvasLayer
@@ -97,8 +82,7 @@ func destinationEntered():
 enum SpeedRating {
 	NONE  = 0,
 	FAST = 1,
-	SLOW = 2
-}
+	SLOW = 2 }
 func calculateScore() -> int:
 	var retVal := SpeedRating.NONE
 	if (!activeLevel.hasExpectedTime): 
@@ -149,8 +133,7 @@ func playerLost(cause : int = LossCause.NONE):
 	saveGame()
 
 
-func goToMainMenu():
-	
+func goToMainMenu():	
 	var menu = mainMenu.instantiate() as Node
 	if (activeLevel): activeLevel.queue_free()
 	activeLevel = menu
@@ -158,6 +141,15 @@ func goToMainMenu():
 	levelScore = 0
 	totalScore = 0
 	isInMenu = true
+func goToSelectedLevel():
+	if (selectedLevelIndex >= allLevels.size()):
+		selectedLevelIndex -= 1
+	selectedLevel = allLevels[selectedLevelIndex]
+	if (selectedLevelIndex > unlockedLevelIndex) : unlockedLevelIndex = selectedLevelIndex
+	restartLevel()
+func goToCredits():
+	selectedLevelIndex =0
+	goToMainMenu() #TODO: load credits once implemented
 
 func restartLevel():
 	var levelReload = selectedLevel.instantiate() as Node
@@ -175,6 +167,7 @@ func saveGame(saveDefaults : Dictionary = {}):
 		"High Score": highScore,
 		"Best Score": bestScore,
 		"Selected Level Index" : selectedLevelIndex,
+		"Unlocked Level Index" : unlockedLevelIndex,
 		"Master Volume": masterVol,
 		"Background Music Volume": bgmVol,
 		"SFX Volume": sfxVol
@@ -194,6 +187,27 @@ func loadGame():
 	highScore = loadData["High Score"]
 	bestScore = loadData["Best Score"]
 	selectedLevelIndex = loadData["Selected Level Index"]
+	unlockedLevelIndex = loadData["Unlocked Level Index"]
 	masterVol = loadData["Master Volume"]
 	bgmVol = loadData["Background Music Volume"]
 	sfxVol = loadData["SFX Volume"]
+	
+	load_levels()
+		
+
+func load_levels():
+	if (!allLevels.is_empty()): allLevels.clear()
+	var folder = DirAccess.open(levelsFolder)
+	if folder:
+		folder.list_dir_begin()
+		var file_name = folder.get_next()
+		while file_name != "":
+			# Check for scene file extensions
+			if file_name.ends_with(".tscn") or file_name.ends_with(".scn"):
+				var full_path = levelsFolder + file_name
+				# Use ResourceLoader.load to load the scene dynamically
+				var packed_scene: PackedScene = ResourceLoader.load(full_path)
+				if packed_scene:
+					allLevels.append(packed_scene)
+			file_name = folder.get_next()
+		folder.list_dir_end()

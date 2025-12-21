@@ -49,8 +49,11 @@ func _process(_delta: float) -> void:
 func closePopUp() -> void:
 	GameManager.settingsOpen = false;
 	get_tree().paused = GameManager.settingsOpen
-	GameManager.gameTimer = 0.0
-	GameManager.goToMainMenu() #TODO: have this load next level instead of main menu
+	if (GameManager.selectedLevelIndex < GameManager.allLevels.size() - 1):
+		GameManager.selectedLevelIndex += 1
+		GameManager.goToSelectedLevel() 
+	else:
+		GameManager.goToCredits()
 	queue_free() 	
 
 

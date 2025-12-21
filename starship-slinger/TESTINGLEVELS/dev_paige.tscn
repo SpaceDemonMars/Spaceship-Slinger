@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://2het5ht37ipr"]
+
+[ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_0to4f"]
+[ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="2_05j8o"]
+[ext_resource type="PackedScene" path="res://Objects/obj_destination.tscn" id="3_qfy11"]
+
+[node name="LevelObjects" type="Node2D"]
+script = ExtResource("1_0to4f")
+
+[node name="ObjPlayspace" parent="." instance=ExtResource("2_05j8o")]
+position = Vector2(-137, 86)
+scale = Vector2(222.37405, 96.90881)
+
+[node name="ObjDestination" parent="." instance=ExtResource("3_qfy11")]
+position = Vector2(-97, -398)
