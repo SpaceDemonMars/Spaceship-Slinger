@@ -53,6 +53,7 @@ func closePopUp() -> void:
 		GameManager.selectedLevelIndex += 1
 		GameManager.goToSelectedLevel() 
 	else:
+		GameManager.selectedLevelIndex = 0
 		GameManager.goToCredits()
 	queue_free() 	
 

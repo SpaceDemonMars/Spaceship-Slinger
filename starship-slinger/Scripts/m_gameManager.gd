@@ -22,6 +22,7 @@ var settingsMenu: PackedScene = preload("res://Scenes/settings_menu.tscn")
 var levelSelect: PackedScene = preload("res://Scenes/level_select.tscn")
 var winScreen: PackedScene = preload("res://Scenes/win_screen.tscn")
 var loseScreen: PackedScene = preload("res://Scenes/lose_screen.tscn")
+var creditsScreen: PackedScene = preload("res://Scenes/credits_screen.tscn")
 
 var isInMenu: bool = false
 var settingsOpen: bool = false
@@ -154,8 +155,13 @@ func goToSelectedLevel():
 		if (selectedLevelIndex > unlockedLevelIndex) : unlockedLevelIndex = selectedLevelIndex
 		restartLevel()
 func goToCredits():
-	selectedLevelIndex =0
-	goToMainMenu() #TODO: load credits once implemented
+	var credits = creditsScreen.instantiate() as Node
+	if (activeLevel): activeLevel.queue_free()
+	activeLevel = credits
+	add_child(activeLevel)
+	levelScore = 0
+	totalScore = 0
+	isInMenu = true
 
 func restartLevel():
 	var levelReload = selectedLevel.instantiate() as Node

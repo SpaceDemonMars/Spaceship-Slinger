@@ -4,6 +4,7 @@ extends Control
 @onready var settingsButton = $Settings
 @onready var levelButton  = $Level
 @onready var playButton = $Play
+@onready var creditsButton = $Credits
 @onready var highScore = $Highscore
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +19,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	settingsButton.visible = !GameManager.settingsOpen
 	playButton.visible = !GameManager.settingsOpen
+	creditsButton.visible = !GameManager.settingsOpen
 
 func change_scene():
 	GameManager.goToSelectedLevel()
@@ -29,3 +31,5 @@ func _on_settings_pressed() -> void:
 		GameManager.openSettingsMenu()
 func _on_level_pressed() -> void:
 	GameManager.openLevelSelect()
+func _on_credits_pressed() -> void:
+	GameManager.goToCredits()

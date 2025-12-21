@@ -1,0 +1,235 @@
+[gd_scene load_steps=6 format=3 uid="uid://bllq77gtv0ojb"]
+
+[ext_resource type="PackedScene" uid="uid://d1d1lurvlepja" path="res://Objects/obj_menustars.tscn" id="1_amjhk"]
+[ext_resource type="Script" uid="uid://by4la7qgk7ea5" path="res://Scenes/credits_screen.gd" id="1_u8vtk"]
+[ext_resource type="FontFile" uid="uid://c1j31hw84v67m" path="res://Fonts/space-frigate-font/SpaceFrigateItalic-2vEW.ttf" id="2_u8vtk"]
+[ext_resource type="FontFile" uid="uid://cdeayi78jcwd1" path="res://Fonts/space-frigate-font/SpaceFrigate-KVdW.ttf" id="3_8jh10"]
+[ext_resource type="FontFile" uid="uid://bh6gp3eaf2n87" path="res://Fonts/snail-mail-ldo-font/SnailMailLdo-Wyav.ttf" id="4_sg4wl"]
+
+[node name="CreditsScreen" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8vtk")
+
+[node name="ObjMenustars" parent="." instance=ExtResource("1_amjhk")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -476.0
+offset_top = 54.0
+offset_right = 476.0
+offset_bottom = 594.0
+grow_horizontal = 2
+
+[node name="Header" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -456.5
+offset_right = 456.5
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_u8vtk")
+theme_override_font_sizes/font_size = 60
+text = "Thank you for Playing!"
+
+[node name="Devs" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 269.0
+offset_top = 75.0
+offset_right = -269.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="Control/Devs"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8jh10")
+theme_override_font_sizes/font_size = 35
+text = "Devs:"
+
+[node name="Valiant" type="Label" parent="Control/Devs"]
+layout_mode = 1
+offset_top = 50.0
+offset_right = 159.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 40
+text = "Valiant"
+horizontal_alignment = 1
+
+[node name="Mars" type="Label" parent="Control/Devs"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -99.0
+offset_top = 50.0
+offset_bottom = 87.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 40
+text = "Mars"
+
+[node name="Assets" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -84.0
+offset_right = 338.0
+offset_bottom = 94.0
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="Control/Assets"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8jh10")
+theme_override_font_sizes/font_size = 30
+text = "Assets"
+
+[node name="Source" type="Label" parent="Control/Assets"]
+layout_mode = 1
+offset_top = 40.0
+offset_right = 127.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 25
+text = "Kenney.nl"
+
+[node name="Label" type="Label" parent="Control/Assets"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_top = 40.0
+offset_bottom = 91.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 25
+text = "Simple Space
+UI Pack - Sci-Fi"
+horizontal_alignment = 2
+
+[node name="Audio" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -338.0
+offset_top = -84.0
+offset_bottom = 94.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="Control/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8jh10")
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+
+[node name="Source" type="Label" parent="Control/Audio"]
+layout_mode = 1
+offset_top = 40.0
+offset_right = 127.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 25
+text = "Kenney.nl"
+
+[node name="Label" type="Label" parent="Control/Audio"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_top = 40.0
+offset_bottom = 91.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 25
+text = "Simple Space
+UI Pack - Sci-Fi"
+horizontal_alignment = 2
+
+[node name="Fonts" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -178.0
+offset_right = 351.0
+grow_vertical = 0
+
+[node name="Header" type="Label" parent="Control/Fonts"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8jh10")
+theme_override_font_sizes/font_size = 30
+text = "Fonts"
+
+[node name="Source" type="Label" parent="Control/Fonts"]
+layout_mode = 1
+offset_top = 40.0
+offset_right = 127.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 25
+text = "dustBUST
+Luke Owens"
+
+[node name="Label" type="Label" parent="Control/Fonts"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_top = 40.0
+offset_bottom = 91.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_sg4wl")
+theme_override_font_sizes/font_size = 25
+text = "Space Frigate
+Snail Mail LDO"
+horizontal_alignment = 2
