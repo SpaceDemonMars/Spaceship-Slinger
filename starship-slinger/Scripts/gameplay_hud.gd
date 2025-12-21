@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var warningPopup = $WarningWindow #hook for playspace
+
 @onready var fuelBar = $FuelGuage
 @onready var delayedFuelBar = $FuelGuage/UsedFuel
 @onready var delayTimer = $FuelGuage/UsageDelay

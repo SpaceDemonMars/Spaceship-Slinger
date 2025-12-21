@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://8vrdrghn2e8t"]
+[gd_scene load_steps=7 format=3 uid="uid://8vrdrghn2e8t"]
 
 [ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_v2pbu"]
 [ext_resource type="PackedScene" uid="uid://cv7stsr85j7rf" path="res://Objects/obj_blackhole.tscn" id="2_v2pbu"]
 [ext_resource type="PackedScene" uid="uid://cms2tpxiskl64" path="res://Objects/obj_Booster.tscn" id="3_g1uok"]
 [ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="4_xhrfk"]
 [ext_resource type="PackedScene" path="res://Objects/obj_destination.tscn" id="5_v2pbu"]
+[ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="6_g1uok"]
 
 [node name="LevelObjects" type="Node2D"]
 script = ExtResource("1_v2pbu")
@@ -36,3 +37,7 @@ wellSize = 5.0
 
 [node name="ObjDestination" parent="." instance=ExtResource("5_v2pbu")]
 position = Vector2(1202, 717)
+
+[node name="ObjPlayspace" parent="." instance=ExtResource("6_g1uok")]
+position = Vector2(553, 343)
+scale = Vector2(287.7741, 190.86989)
