@@ -20,6 +20,7 @@ var ship : PackedScene = preload("res://Scenes/ss_starter.tscn")
 var mainMenu: PackedScene = preload("res://Scenes/main_menu.tscn")
 var settingsMenu: PackedScene = preload("res://Scenes/settings_menu.tscn")
 var levelSelect: PackedScene = preload("res://Scenes/level_select.tscn")
+var information: PackedScene = preload("res://Scenes/tutorial.tscn")
 var winScreen: PackedScene = preload("res://Scenes/win_screen.tscn")
 var loseScreen: PackedScene = preload("res://Scenes/lose_screen.tscn")
 var creditsScreen: PackedScene = preload("res://Scenes/credits_screen.tscn")
@@ -70,6 +71,9 @@ func openSettingsMenu() ->void:
 func openLevelSelect() ->void:
 	var settings = levelSelect.instantiate() as CanvasLayer
 	add_child(settings)	
+func openInfoBoard():
+	var info = information.instantiate() as CanvasLayer
+	add_child(info)
 
 func destinationEntered():
 	var win = winScreen.instantiate() as CanvasLayer

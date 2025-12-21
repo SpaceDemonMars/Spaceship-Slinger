@@ -1,0 +1,331 @@
+[gd_scene load_steps=18 format=3 uid="uid://b5sb8kj2tkkk3"]
+
+[ext_resource type="FontFile" uid="uid://c1j31hw84v67m" path="res://Fonts/space-frigate-font/SpaceFrigateItalic-2vEW.ttf" id="1_h2ono"]
+[ext_resource type="Script" uid="uid://ccc7h5vrxrwgi" path="res://Scripts/tutorial.gd" id="1_on4kn"]
+[ext_resource type="FontFile" uid="uid://cdeayi78jcwd1" path="res://Fonts/space-frigate-font/SpaceFrigate-KVdW.ttf" id="2_on4kn"]
+[ext_resource type="Texture2D" uid="uid://jnhk0vc5yrgj" path="res://Assets/Sprites/Ships/ship_A.png" id="3_70gml"]
+[ext_resource type="Texture2D" uid="uid://b6vu6va8fsba5" path="res://Assets/Sprites/Ships/satellite_A.png" id="4_8va2t"]
+[ext_resource type="Texture2D" uid="uid://cg0uxunv0pj8p" path="res://Assets/Sprites/Ships/ship_sidesD.png" id="5_8mnmb"]
+[ext_resource type="PackedScene" uid="uid://cv7stsr85j7rf" path="res://Objects/obj_blackhole.tscn" id="6_koko0"]
+[ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="7_lsb8r"]
+[ext_resource type="PackedScene" uid="uid://6mfi64spobc2" path="res://Objects/obj_yellowpaint.tscn" id="8_ap3ea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6ver"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nb4t"]
+bg_color = Color(0.4392157, 0.69803923, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb51l"]
+bg_color = Color(0.22352941, 0.22352941, 0.22352941, 0.5019608)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxsep"]
+bg_color = Color(0.81079626, 0.89639056, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lexqi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkgwa"]
+bg_color = Color(0.99999994, 0.35486352, 0.13953415, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_radxo"]
+bg_color = Color(0.22352941, 0.22352941, 0.22352941, 0.5019608)
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27450982)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cu4j"]
+bg_color = Color(1, 0.77380913, 0.7223475, 1)
+
+[node name="Tutorial" type="CanvasLayer"]
+script = ExtResource("1_on4kn")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 242.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("1_h2ono")
+theme_override_font_sizes/font_size = 30
+text = "Information:"
+
+[node name="Health" type="ProgressBar" parent="Background"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -222.0
+offset_right = 265.0
+offset_bottom = -209.5
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_t6ver")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2nb4t")
+value = 50.0
+show_percentage = false
+
+[node name="DelayedHealth" type="ProgressBar" parent="Background/Health"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_jb51l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dxsep")
+value = 65.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Background/Health"]
+layout_mode = 1
+offset_top = -25.0
+offset_right = 119.0
+offset_bottom = -2.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+text = "Health Bar"
+
+[node name="FuelGuage" type="ProgressBar" parent="Background"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -162.0
+offset_right = 265.0
+offset_bottom = -137.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_lexqi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pkgwa")
+value = 60.0
+show_percentage = false
+
+[node name="UsedFuel" type="ProgressBar" parent="Background/FuelGuage"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_radxo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1cu4j")
+value = 80.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Background/FuelGuage"]
+layout_mode = 1
+offset_top = -25.0
+offset_right = 86.0
+offset_bottom = -2.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+text = "Fuel Gauge"
+
+[node name="General" type="Control" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.0
+offset_top = 75.0
+offset_right = 546.0
+offset_bottom = 235.0
+grow_horizontal = 2
+
+[node name="Ship" type="Label" parent="Background/General"]
+layout_mode = 1
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 22
+text = "Your Ship"
+horizontal_alignment = 1
+
+[node name="Destination" type="Label" parent="Background/General"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.5
+offset_right = 92.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 22
+text = "Your Destination"
+horizontal_alignment = 1
+
+[node name="Booster" type="Label" parent="Background/General"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -244.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 22
+text = "Boost Gate"
+horizontal_alignment = 1
+
+[node name="ShipAsset" type="TextureRect" parent="Background/General"]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 156.0
+texture = ExtResource("3_70gml")
+
+[node name="DestinationAsset" type="TextureRect" parent="Background/General"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.5
+offset_right = 34.5
+offset_bottom = 128.0
+grow_horizontal = 2
+texture = ExtResource("4_8va2t")
+
+[node name="BoosterAsset" type="TextureRect" parent="Background/General"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_top = 13.0
+offset_right = -56.0
+offset_bottom = 141.0
+grow_horizontal = 0
+texture = ExtResource("5_8mnmb")
+
+[node name="Background" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -546.0
+offset_top = -390.0
+offset_right = 546.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="blackhole" type="Control" parent="Background/Background"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ObjBlackhole" parent="Background/Background/blackhole" instance=ExtResource("6_koko0")]
+position = Vector2(121, 123)
+
+[node name="Blackhole" type="Label" parent="Background/Background/blackhole"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 31.0
+offset_right = 927.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 30
+text = "Black Hole - extremely dangerous"
+
+[node name="bhInfo" type="Label" parent="Background/Background/blackhole"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 71.0
+offset_right = 967.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 20
+text = "when there is more than one, becomes a wormhole
+	 teleporting whatever passes through to the other"
+
+[node name="star" type="Control" parent="Background/Background"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 35.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Blackhole" type="Label" parent="Background/Background/star"]
+layout_mode = 0
+offset_left = -195.0
+offset_top = -70.0
+offset_right = -105.0
+offset_bottom = -39.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 30
+text = "Star"
+
+[node name="bhInfo" type="Label" parent="Background/Background/star"]
+layout_mode = 0
+offset_left = -617.0
+offset_top = -31.0
+offset_right = -102.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 20
+text = "It's gravity can be used to gain speed   
+be careful not to crash into it"
+horizontal_alignment = 2
+
+[node name="ObjGravity" parent="Background/Background/star" instance=ExtResource("7_lsb8r")]
+position = Vector2(-29, -35)
+wellSize = 2.5
+
+[node name="marker" type="Control" parent="Background/Background"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="ObjYellowpaint" parent="Background/Background/marker" instance=ExtResource("8_ap3ea")]
+position = Vector2(217, -35)
+
+[node name="Blackhole" type="Label" parent="Background/Background/marker"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = -74.0
+offset_right = 542.0
+offset_bottom = -43.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 30
+text = "Travel Marker"
+
+[node name="bhInfo" type="Label" parent="Background/Background/marker"]
+layout_mode = 0
+offset_left = 263.0
+offset_top = -35.0
+offset_right = 698.0
+offset_bottom = -14.0
+theme_override_fonts/font = ExtResource("2_on4kn")
+theme_override_font_sizes/font_size = 20
+text = "Helps keep new pilots on track"

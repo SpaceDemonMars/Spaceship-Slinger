@@ -65,3 +65,5 @@ func _on_confirm_pressed() -> void:
 	GameManager.goToMainMenu()
 	closeSettingsMenu()
 	queue_free()
+func _on_info_pressed() -> void:
+	GameManager.openInfoBoard()

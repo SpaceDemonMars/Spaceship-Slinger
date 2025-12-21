@@ -184,6 +184,21 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_7y5a0")
 text = "Reset Save Data"
 
+[node name="Info" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -67.0
+offset_top = 15.0
+offset_right = -11.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_h2y1r")
+theme_override_font_sizes/font_size = 22
+action_mode = 0
+text = "info"
+
 [node name="ResetConfirmWindow" type="ColorRect" parent="."]
 visible = false
 anchors_preset = 8
@@ -269,5 +284,6 @@ text = "Nevermind."
 [connection signal="pressed" from="ColorRect/Abandon" to="." method="_on_abandon_pressed"]
 [connection signal="pressed" from="ColorRect/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="ColorRect/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="ColorRect/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="ResetConfirmWindow/Confirm" to="." method="_on_confirm_pressed"]
 [connection signal="pressed" from="ResetConfirmWindow/Cancel" to="." method="_on_cancel_pressed"]
