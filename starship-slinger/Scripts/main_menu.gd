@@ -33,3 +33,5 @@ func _on_level_pressed() -> void:
 	GameManager.openLevelSelect()
 func _on_credits_pressed() -> void:
 	GameManager.goToCredits()
+func _on_tutorial_pressed() -> void:
+	GameManager.openInfoBoard()

@@ -49,6 +49,7 @@ var unlockedLevelIndex: int = defaultSaveData["Unlocked Level Index"]
 
 func _ready():
 	loadGame()
+	load_levels()
 	#load level
 	selectedLevel = allLevels[selectedLevelIndex]
 	goToMainMenu()
@@ -207,8 +208,6 @@ func loadGame():
 	masterVol = loadData["Master Volume"]
 	bgmVol = loadData["Background Music Volume"]
 	sfxVol = loadData["SFX Volume"]
-	
-	load_levels()
 		
 
 func load_levels():

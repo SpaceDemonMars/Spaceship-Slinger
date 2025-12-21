@@ -41,6 +41,7 @@ shadow_offset = Vector2(0, 1)
 bg_color = Color(1, 0.77380913, 0.7223475, 1)
 
 [node name="Tutorial" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_on4kn")
 
 [node name="Background" type="ColorRect" parent="."]
