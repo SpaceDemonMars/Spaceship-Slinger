@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://beol6ec5fmfh3"]
+[gd_scene load_steps=2 format=3 uid="uid://beol6ec5fmfh3"]
+
+[ext_resource type="AudioStream" uid="uid://bujyo0cbjimo4" path="res://Audio/impact-152508.mp3" id="1_g0cor"]
 
 [node name="SFX_Player" type="AudioStreamPlayer"]
-playback_type = 2
+process_mode = 3
+stream = ExtResource("1_g0cor")

@@ -146,6 +146,7 @@ enum LossCause {
 	ABANDONED = 4 }
 func playerLost(cause : int = LossCause.NONE):
 	var lose = loseScreen.instantiate() as CanvasLayer
+	sfxPlayer.play()
 	add_child(lose)
 	lose.popupInit(checkHighScore(), cause)
 	saveGame()
@@ -187,8 +188,8 @@ func updateBGMVolume():
 	var scaledVolume = (bgmVol/100.0 * masterVol/100.0)
 	bgmPlayer.volume_linear = scaledVolume
 func updateSFXVolume():
-	#var scaledVolume = (sfxVol/100.0 * masterVol/100.0)
-	#sfxLoad.volume_linear = scaledVolume
+	var scaledVolume = (sfxVol/100.0 * masterVol/100.0)
+	sfxPlayer.volume_linear = scaledVolume
 	pass
 
 #save/load
