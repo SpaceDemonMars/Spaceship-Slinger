@@ -9,8 +9,9 @@
 
 [node name="Lv6Fold" type="Node2D"]
 script = ExtResource("1_2p3cu")
-ExpectedCompletionTime = 60.0
+ExpectedCompletionTime = 30.0
 MaxCompletionTime = 60.0
+scoringMargin = 10.0
 
 [node name="ObjGravity" parent="." instance=ExtResource("2_txf87")]
 position = Vector2(1587, 297)

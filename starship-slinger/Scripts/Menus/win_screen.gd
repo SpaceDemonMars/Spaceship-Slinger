@@ -31,11 +31,11 @@ func popupInit(isBScore : bool = false, isHScore : bool = false,
 	if (hasTimeInfo):
 		expectedTime.text = eTime
 		actualTime.text = aTime
-		if (speed == 1):
+		if (speed == GameManager.SpeedRating.FAST):
 			speedText.text = fastText
 			speedText.set("theme_override_colors/font_color", fastClr)
 			speedText.visible = true
-		elif (speed == 2):
+		elif (speed == GameManager.SpeedRating.SLOW):
 			speedText.text = slowText
 			speedText.set("theme_override_colors/font_color", slowClr)
 			speedText.visible = true

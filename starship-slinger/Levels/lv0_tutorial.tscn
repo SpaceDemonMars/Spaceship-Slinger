@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds4gfwfp8syyl"]
+[gd_scene load_steps=6 format=3 uid="uid://bpqmd1v8crr07"]
 
 [ext_resource type="Script" uid="uid://csn4po8s0gnxy" path="res://level_data.gd" id="1_lhajp"]
-[ext_resource type="PackedScene" path="res://Objects/obj_destination.tscn" id="2_todhv"]
+[ext_resource type="PackedScene" uid="uid://baehc6ggoilrg" path="res://Objects/obj_destination.tscn" id="2_todhv"]
 [ext_resource type="PackedScene" uid="uid://b672krlvwbqre" path="res://Objects/obj_gravity.tscn" id="3_ajksj"]
 [ext_resource type="PackedScene" uid="uid://bvnf0qvfcfitw" path="res://Objects/obj_yellowpaint.tscn" id="4_dbkqi"]
 [ext_resource type="PackedScene" uid="uid://ckq10wjfyh588" path="res://Objects/obj_playspace.tscn" id="5_pymw2"]
 
 [node name="LvTutorial" type="Node2D"]
 script = ExtResource("1_lhajp")
-ExpectedCompletionTime = 5.0
-MaxCompletionTime = 30.0
+ExpectedCompletionTime = 15.0
+MaxCompletionTime = 60.0
+scoringMargin = 5.0
 
 [node name="ObjDestination" parent="." instance=ExtResource("2_todhv")]
 position = Vector2(1372, 422)

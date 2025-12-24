@@ -98,19 +98,20 @@ func destinationEntered():
 	
 
 enum SpeedRating {
-	NONE  = 0,
-	FAST = 1,
-	SLOW = 2 }
+	SLOW  = 0,
+	NONE = 1,
+	FAST = 2 }
 func calculateScore() -> int:
 	var retVal := SpeedRating.NONE
 	if (!activeLevel.hasExpectedTime): 
 		levelScore = activeLevel.goalValue
 	else:
-		levelScore = activeLevel.goalValue * (activeLevel.ExpectedCompletionTime/gameTimer)
 		if (gameTimer <= (activeLevel.ExpectedCompletionTime - activeLevel.scoringMargin)):
 			retVal = SpeedRating.FAST
 		elif (gameTimer >= (activeLevel.ExpectedCompletionTime + activeLevel.scoringMargin)):
 			retVal = SpeedRating.SLOW
+		var speedBonus = activeLevel.goalValue * retVal
+		levelScore = (activeLevel.goalValue + speedBonus) * (activeLevel.ExpectedCompletionTime/gameTimer)
 	return retVal
 
 func checkBestScore() -> bool:

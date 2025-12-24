@@ -10,6 +10,7 @@
 script = ExtResource("1_2o28p")
 ExpectedCompletionTime = 15.0
 MaxCompletionTime = 45.0
+scoringMargin = 5.0
 
 [node name="ObjDestination" parent="." instance=ExtResource("2_c3rf1")]
 position = Vector2(8483, -6470)

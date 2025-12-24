@@ -9,8 +9,9 @@
 
 [node name="Lv3Orbit" type="Node2D"]
 script = ExtResource("1_ht2g1")
-ExpectedCompletionTime = 15.0
+ExpectedCompletionTime = 30.0
 MaxCompletionTime = 60.0
+scoringMargin = 10.0
 
 [node name="ObjGravity" parent="." instance=ExtResource("2_ct37r")]
 position = Vector2(935, -3959)

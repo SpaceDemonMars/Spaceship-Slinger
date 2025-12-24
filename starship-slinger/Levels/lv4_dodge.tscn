@@ -9,8 +9,9 @@
 
 [node name="lv4_dodge" type="Node2D"]
 script = ExtResource("1_b6xgv")
-ExpectedCompletionTime = 10.0
-MaxCompletionTime = 40.0
+ExpectedCompletionTime = 20.0
+MaxCompletionTime = 50.0
+scoringMargin = 5.0
 
 [node name="ObjGravity" parent="." instance=ExtResource("2_6u38b")]
 position = Vector2(9747, -799)

@@ -9,8 +9,10 @@
 
 [node name="Lv5warp" type="Node2D"]
 script = ExtResource("1_qjmyc")
+goalValue = 200
 ExpectedCompletionTime = 10.0
 MaxCompletionTime = 20.0
+scoringMargin = 2.0
 
 [node name="ObjGravity" parent="." instance=ExtResource("2_t1d2b")]
 position = Vector2(712, 775)
